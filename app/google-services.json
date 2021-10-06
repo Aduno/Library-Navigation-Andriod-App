@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "174065341938",
+    "firebase_url": "https://seg-byblos-default-rtdb.firebaseio.com",
+    "project_id": "seg-byblos",
+    "storage_bucket": "seg-byblos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:174065341938:android:08d0e39396fee49273476b",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "174065341938-22m6d3lp7htpkl8adv83tmi8dsr4a5bu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKHxEEF31IAXLaSrfLZKccLOsnmitAiqg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "174065341938-22m6d3lp7htpkl8adv83tmi8dsr4a5bu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

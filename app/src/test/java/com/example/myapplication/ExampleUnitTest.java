@@ -1,4 +1,4 @@
-package com.example.wayfinding;
+package com.example.myapplication;
 
 import org.junit.Test;
 
