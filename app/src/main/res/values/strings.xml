@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">Wayfinding</string>
-    <string name="title_activity_admin_login_screen">AdminLoginScreen</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+    <string name="app_name">Welcome Screen</string>
+    <string name="welcome">Welcome</string>
+    <string name="todo">TODO</string>
+    <string name="todo1">TODO1</string>
+    <string name="login">Login</string>
+    <string name="todo2">TODO2</string>
+    <string name="todo3">TODO3</string>
+    <string name="to_morisset_library">to Morisset Library</string>
+    <string name="todo4">TODO4</string>
+    <string name="todo5">TODO5</string>
 </resources>
