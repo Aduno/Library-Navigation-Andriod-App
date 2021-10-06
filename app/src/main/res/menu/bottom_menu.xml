@@ -4,5 +4,5 @@
     <item
         android:title="Map"
         android:id="@+id/firstFragment"
-        android:icon="@drawable/ic_map" />
+        />
 </menu>
