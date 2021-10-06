@@ -4,26 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="731dp"
-        android:contentDescription="@string/todo5"
-        app:layout_constraintBottom_toBottomOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.671"
-        app:srcCompat="@drawable/screen_shot_2021_10_05_at_3_01_07_pm" />
+    tools:context=".MainActivity"
+    android:background="@drawable/screen_shot_2021_10_05_at_3_01_07_pm">
 
     <Button
         android:id="@+id/button"
         android:layout_width="151dp"
         android:layout_height="42dp"
-        android:layout_marginBottom="140dp"
+        android:layout_marginBottom="100dp"
         android:backgroundTint="#710303"
         android:scaleX="1.5"
         android:scaleY="1.5"
@@ -33,7 +21,6 @@
         app:iconTint="#6A1313"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         tools:visibility="visible" />
 
