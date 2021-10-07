@@ -9,11 +9,9 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="413dp"
-        android:layout_height="481dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
+        android:layout_width="403dp"
+        android:layout_height="538dp"
+        android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/screen_shot_2021_10_05_at_3_01_07_pm" />
@@ -22,7 +20,6 @@
         android:id="@+id/button"
         android:layout_width="151dp"
         android:layout_height="42dp"
-        android:layout_marginTop="12dp"
         android:backgroundTint="#710303"
         android:onClick="goToSignin"
         android:scaleX="1.5"
@@ -31,11 +28,9 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="16sp"
         app:iconTint="#6A1313"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.105"
         tools:visibility="visible" />
 
     <ImageButton
@@ -52,7 +47,7 @@
         app:layout_constraintHorizontal_bias="0.377"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.344"
+        app:layout_constraintVertical_bias="0.217"
         app:srcCompat="?android:attr/actionModeWebSearchDrawable"
         app:tint="#6A0404"
         tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
@@ -69,7 +64,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/homeButton"
         app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.344"
+        app:layout_constraintVertical_bias="0.217"
         app:srcCompat="@android:drawable/ic_lock_silent_mode_off"
         app:tint="#570202"
         tools:ignore="SpeakableTextPresentCheck" />
