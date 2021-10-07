@@ -1,18 +1,44 @@
 package com.example.wayfinding;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
-
+    private ToggleButton lightButton;
+    private ConstraintLayout main;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        main = findViewById(R.id.mainFrame);
+        lightButton = findViewById(R.id.toggleLight);
+
+        lightButton.setText(null);
+        lightButton.setTextOn(null);
+        lightButton.setTextOff(null);
+
+        lightButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    lightButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_lightmode,null));
+                    main.setBackgroundColor(Color.LTGRAY);
+                }else{
+                    lightButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_darkmode,null));
+                    main.setBackgroundColor(Color.WHITE);
+                }
+            }
+        });
     }
 
 
@@ -34,4 +60,5 @@ public class MainActivity extends AppCompatActivity {
     public void toggleSound(View v){
         ImageButton sound = findViewById(R.id.soundIcon);
     }
+
 }
