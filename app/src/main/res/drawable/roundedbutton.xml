@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#991B31" />
+    <corners android:bottomRightRadius="13dp"
+        android:bottomLeftRadius="13dp"
+        android:topRightRadius="13dp"
+        android:topLeftRadius="13dp"/>
+</shape>
+
+<!--Code from https://stackoverflow.com/questions/10266595/how-to-make-a-round-button by Arif Nadeem-->
