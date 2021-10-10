@@ -18,26 +18,26 @@
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.11"
+            android:layout_weight="0.12"
             android:background="#991B31"
             android:src="@drawable/uottawaheader" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.89">
+            android:layout_weight="0.88">
 
             <EditText
                 android:id="@+id/editTextTextPersonName"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_marginTop="168dp"
+                android:background="@drawable/underline_box"
                 android:ems="10"
                 android:hint="@string/prompt_username"
                 android:inputType="textPersonName"
                 android:textColor="#991b31"
                 android:textColorHint="#991b31"
-
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
@@ -46,13 +46,14 @@
             <EditText
                 android:id="@+id/editTextTextPassword"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_marginTop="40dp"
                 android:ems="10"
                 android:hint="@string/prompt_password"
                 android:inputType="textPassword"
                 android:textColor="#991b31"
                 android:textColorHint="#991b31"
+                android:background="@drawable/underline_box"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"

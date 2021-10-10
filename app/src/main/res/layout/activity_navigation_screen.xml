@@ -18,7 +18,7 @@
             android:id="@+id/imageView3"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.11"
+            android:layout_weight="0.12"
             android:background="#991B31"
             android:src="@drawable/uottawaheader"
             tools:layout_editor_absoluteX="0dp" />
@@ -28,7 +28,7 @@
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.78"
+            android:layout_weight="0.77"
             android:background="#FFFFFF"
             app:defaultNavHost="true"
             app:navGraph="@navigation/my_nav" />
@@ -39,7 +39,14 @@
             android:layout_height="0dp"
             android:layout_weight="0.11"
             android:background="#FFFFFF"
-            app:menu="@menu/bottom_menu" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_menu">
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

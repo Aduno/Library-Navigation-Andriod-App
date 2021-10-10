@@ -5,7 +5,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -32,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     lightButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_lightmode,null));
-                    main.setBackgroundColor(Color.LTGRAY);
+                    main.setBackgroundColor(Color.rgb(100,100,100));
                 }else{
-                    lightButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_darkmode,null));
+                    lightButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_baseline_brightness_high_24,null));
                     main.setBackgroundColor(Color.WHITE);
                 }
             }
@@ -44,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     //Sends the user to navigation/home page
-    public void goToNav(View v){
-        Intent intent = new Intent(MainActivity.this, NavigationScreen.class);
+    public void goToHome(View v){
+        Intent intent = new Intent(MainActivity.this, HomePageActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }

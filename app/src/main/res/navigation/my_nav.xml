@@ -6,7 +6,7 @@
     app:startDestination="@id/firstFragment">
     <fragment
         android:id="@+id/firstFragment"
-        android:name="com.example.wayfinding.FirstFragment"
+        android:name="fragments.FirstFragment"
         android:label="fragment_first"
         tools:layout="@layout/fragment_first" />
 </navigation>

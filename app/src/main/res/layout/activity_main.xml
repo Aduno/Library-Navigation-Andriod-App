@@ -15,63 +15,72 @@
         android:weightSum="1">
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
+            android:id="@+id/imageView8"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="0.70"
-            android:paddingTop="12dp"
+            android:layout_weight="0.25"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            app:srcCompat="@drawable/uottawa_rounded" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.50"
             android:scaleType="fitStart"
-            app:srcCompat="@drawable/screen_shot_2021_10_05_at_3_01_07_pm" />
+            app:srcCompat="@drawable/uottawa_welcome_text" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/navigationButtons"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.3">
+            android:layout_weight="0.25">
 
             <Button
                 android:id="@+id/button"
-                android:layout_width="151dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="20dp"
+                android:layout_width="130dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/roundedbutton"
-                android:backgroundTint="#6E0203"
+                android:backgroundTint="#99102f"
                 android:onClick="goToSignin"
                 android:text="@string/action_sign_in_short"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.507"
+                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/soundIcon"
                 tools:visibility="visible" />
-
-            <ImageButton
-                android:id="@+id/homeButton"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="84dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/ic_baseline_home_24"
-                android:onClick="goToNav"
-                android:scaleX="0.7"
-                android:scaleY="0.7"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageButton
                 android:id="@+id/soundIcon"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginStart="2dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="81dp"
-                android:background="@drawable/ic_soundon"
+                android:background="@drawable/ic_baseline_volume_up_24"
                 android:scaleX="0.7"
                 android:scaleY="0.7"
                 app:layout_constraintEnd_toEndOf="@+id/toggleLight"
+                app:layout_constraintHorizontal_bias="0.375"
                 app:layout_constraintStart_toEndOf="@+id/homeButton"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageButton
+                android:id="@+id/homeButton"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/ic_baseline_home_24"
+                android:onClick="goToHome"
+                android:scaleX="0.7"
+                android:scaleY="0.7"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -79,9 +88,9 @@
                 android:id="@+id/toggleLight"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="84dp"
-                android:background="@drawable/ic_darkmode"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="80dp"
+                android:background="@drawable/ic_baseline_brightness_high_24"
                 android:scaleX="0.7"
                 android:scaleY="0.7"
                 app:layout_constraintEnd_toEndOf="parent"
