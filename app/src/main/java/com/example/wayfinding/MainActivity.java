@@ -9,11 +9,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.ToggleButton;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
+
     private ToggleButton lightButton;
     private ConstraintLayout main;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         lightButton.setTextOn(null);
         lightButton.setTextOff(null);
 
+        //Initializes the darkmode toggle button
         lightButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
