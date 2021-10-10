@@ -6,3 +6,5 @@
     <corners android:topRightRadius="13dp"
         android:topLeftRadius="13dp"/>
 </shape>
+
+<!--Code structure from https://stackoverflow.com/questions/10266595/how-to-make-a-round-button by Arif Nadeem-->

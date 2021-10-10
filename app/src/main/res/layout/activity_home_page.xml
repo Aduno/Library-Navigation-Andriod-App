@@ -27,6 +27,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:fontFamily="@font/amethysta"
         android:background="@drawable/searchbar_background"
         android:ems="10"
         android:hint="@string/prompt_location"
@@ -55,6 +56,7 @@
             android:background="@drawable/announcement_title_background"
             android:gravity="center"
             android:text="@string/announcement_title"
+            android:fontFamily="@font/amethysta"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:textColor="@color/white"
@@ -67,6 +69,11 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="30dp"
             android:layout_gravity="center"
+            android:paddingTop="13sp"
+            android:paddingBottom="10sp"
+            android:clipToPadding="false"
+            android:dividerHeight="25sp"
+            android:divider="@android:color/transparent"
             android:background="@drawable/announcement_list_background"/>
     </LinearLayout>
 
