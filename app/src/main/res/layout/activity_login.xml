@@ -28,7 +28,7 @@
             android:layout_weight="0.88">
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/username"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_marginTop="168dp"
@@ -44,7 +44,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editTextTextPassword"
+                android:id="@+id/password"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_marginTop="40dp"
@@ -57,19 +57,20 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+                app:layout_constraintTop_toBottomOf="@+id/username" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/signin"
                 android:layout_width="151dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
                 android:background="@drawable/roundedbutton"
+                android:onClick="login"
                 android:text="@string/action_sign_in_short"
                 android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+                app:layout_constraintTop_toBottomOf="@+id/password" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
