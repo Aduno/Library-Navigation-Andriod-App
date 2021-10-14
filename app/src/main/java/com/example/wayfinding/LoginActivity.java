@@ -21,7 +21,6 @@ public class LoginActivity extends AppCompatActivity {
         usernameInput = findViewById(R.id.username);
         passwordInput = findViewById(R.id.password);
     }
-
     public void login(View v){
         String username = usernameInput.getText().toString();
         String password = passwordInput.getText().toString();
@@ -30,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Logged in as admin",Toast.LENGTH_LONG).show();
                 //Sends the user to the main page
                 //Also creates a admin object which is used to define the user
-                Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
+                Intent intent = new Intent(LoginActivity.this, HomePageActivity.class);
                 startActivity(intent);
             }
             else{
@@ -39,5 +38,3 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     }
-
-}
