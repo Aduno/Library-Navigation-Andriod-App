@@ -1,8 +1,6 @@
 package com.example.wayfinding;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Intent;
@@ -12,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -20,11 +19,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 import java.util.Locale;
+
 
 public class HomePageActivity extends AppCompatActivity {
 
@@ -33,6 +39,8 @@ public class HomePageActivity extends AppCompatActivity {
     private ArrayList<String> items;
     private ArrayAdapter<String> adapter;
     private SpeechRecognizer recognizer;
+    //This URL has to be changed depending on the PC unless an external server with a static ip is setup
+    private String URL = "http://192.168.1.12:8080";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +60,7 @@ public class HomePageActivity extends AppCompatActivity {
         ArrayList<String> locationList = new ArrayList<>();
         locationList.add("Printers");
         locationList.add("Elevator");
+
 
         searchBar.setAdapter(new ArrayAdapter<>(HomePageActivity.this,android.R.layout.simple_spinner_dropdown_item, locationList));
         searchBar.setTitle(getString(R.string.search_spinner_title));
@@ -78,7 +87,7 @@ public class HomePageActivity extends AppCompatActivity {
 
         //Need to populate the list with announcement information
         items = new ArrayList<>();
-        getAnnouncements(items);
+//        getAnnouncements(items);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items){
             @Override
             public View getView(int position, View convertView, ViewGroup parent){
@@ -92,10 +101,24 @@ public class HomePageActivity extends AppCompatActivity {
 
     /**
      * Contacts DB and retreives annoucement information
-     * @param items
+     * Based on tutorial from https://www.youtube.com/watch?v=GKyEJmCoK5s&t=273s by Sandip Bhattacharya
      */
     public void getAnnouncements(ArrayList<String> items){
-        //need to connect to db  and retrieve info
+        //
+        URL = "http://192.168.1.12:8080/get_poi.php";
+        StringRequest req = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+            }
+        },new Response.ErrorListener(){
+            @Override
+            public void onErrorResponse(VolleyError e){
+                Toast.makeText(HomePageActivity.this,"Failed to connect to database", Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(req);
+
         items.add("The library will be closed from 6-8PM on October 16 for temporary repairs on the elevator");
         items.add("Ann 2 The library will be closed from 6-8PM on October 16 for temporary repairs on the elevator");
         items.add("Ann 4 The library will be closed from 6-8PM on October 16 for temporary repairs on the elevator");
