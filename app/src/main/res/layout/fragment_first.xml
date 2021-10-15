@@ -26,7 +26,7 @@
         android:layout_height="61dp"
         android:layout_marginBottom="16dp"
         android:gravity="center_horizontal"
-        android:text="Your book is 15m away"
+        android:text="The Elevators are 10m away"
         android:textColor="#000000"
         android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView5"

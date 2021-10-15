@@ -26,23 +26,23 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.06">
+
         <com.toptoche.searchablespinnerlibrary.SearchableSpinner
             android:id="@+id/search_bar"
             android:layout_width="300dp"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:background="@drawable/searchbar_background"
-            app:hintText="@string/prompt_location"
-            />
+            app:hintText="@string/prompt_location" />
 
         <Button
-            android:onClick="speechToText"
-            android:layout_width="45dp"
+            android:layout_width="40dp"
             android:layout_height="45dp"
             android:layout_alignRight="@id/search_bar"
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
-            android:background="@drawable/microphone_ic" />
+            android:background="@drawable/microphone_ic"
+            android:onClick="speechToText" />
 
     </RelativeLayout>
 
