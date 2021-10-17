@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Logged in as admin",Toast.LENGTH_LONG).show();
                 //Sends the user to the main page
                 //Also creates a admin object which is used to define the user
-                Intent intent = new Intent(LoginActivity.this, HomePageActivity.class);
+                Intent intent = new Intent(LoginActivity.this, activity_admin_announcements.class);
                 startActivity(intent);
             }
             else{
