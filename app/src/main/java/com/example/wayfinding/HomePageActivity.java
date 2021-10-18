@@ -40,7 +40,7 @@ public class HomePageActivity extends AppCompatActivity {
     private ArrayAdapter<String> adapter;
     private SpeechRecognizer recognizer;
     //This URL has to be changed depending on the PC unless an external server with a static ip is setup
-    private String URL = "http://192.168.1.12:8080";
+    private String URL = "http://192.168.1.18:8080";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +87,7 @@ public class HomePageActivity extends AppCompatActivity {
 
         //Need to populate the list with announcement information
         items = new ArrayList<>();
-//        getAnnouncements(items);
+        getAnnouncements(items);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items){
             @Override
             public View getView(int position, View convertView, ViewGroup parent){
@@ -105,7 +105,7 @@ public class HomePageActivity extends AppCompatActivity {
      */
     public void getAnnouncements(ArrayList<String> items){
         //
-        URL = "http://192.168.1.12:8080/get_poi.php";
+        URL = "http://192.168.1.18:8080/get_poi.php";
         StringRequest req = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

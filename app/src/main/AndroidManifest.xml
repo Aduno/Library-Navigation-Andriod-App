@@ -14,7 +14,7 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activity_admin_announcements"
+            android:name=".AdminAnnouncement"
             android:exported="false" />
         <activity
             android:name=".HomePageActivity"

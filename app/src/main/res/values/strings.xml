@@ -16,4 +16,6 @@
     <string name="prompt_location">Search here</string>
     <string name="announcement_title">Announcements</string>
     <string name="search_spinner_title">Select location</string>
+    <string name="delete_announcement">Delete Announcement</string>
+    <string name="add_announcement">Add announcement</string>
 </resources>
