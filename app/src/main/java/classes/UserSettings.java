@@ -10,6 +10,7 @@ public class UserSettings implements Serializable {
     // 1=enabled, 0=disabled
     protected boolean darkMode;
     protected boolean audioMode;
+    protected boolean french;
 
     public UserSettings(boolean darkMode, boolean audioMode){
         this.darkMode = darkMode;

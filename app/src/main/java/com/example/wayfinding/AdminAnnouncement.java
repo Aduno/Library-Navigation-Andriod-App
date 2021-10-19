@@ -2,6 +2,7 @@ package com.example.wayfinding;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
@@ -36,5 +37,10 @@ public class AdminAnnouncement extends AppCompatActivity {
             }
         };
         announcementList.setAdapter(adp);
+    }
+
+    public void goToHome(View v){
+        Intent intent = new Intent(AdminAnnouncement.this, HomePageActivity.class);
+        startActivity(intent);
     }
 }

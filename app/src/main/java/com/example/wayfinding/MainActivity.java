@@ -36,10 +36,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    lightButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_lightmode,null));
+                    lightButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_baseline_brightness_high_24,null));
                     main.setBackgroundColor(Color.rgb(100,100,100));
                 }else{
-                    lightButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_baseline_brightness_high_24,null));
+                    lightButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_baseline_brightness_3_24,null));
                     main.setBackgroundColor(Color.WHITE);
                 }
             }
