@@ -21,6 +21,7 @@
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.166015625" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/announcement_list_background.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/announcement_title_background.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/divider.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/ic_baseline_brightness_high_24.xml" value="0.226953125" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.226953125" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.287109375" />
@@ -38,6 +39,7 @@
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/underline_box.xml" value="0.226953125" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/welcome_text.xml" value="0.226953125" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/welcome_text_background.xml" value="0.287109375" />
+        <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/layout/activity_admin_announcements2.xml" value="0.21302083333333333" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/layout/activity_home_page.xml" value="0.25" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/layout/activity_login.xml" value="0.2907608695652174" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/layout/activity_main.xml" value="0.25" />

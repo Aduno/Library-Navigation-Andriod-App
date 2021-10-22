@@ -80,11 +80,11 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="30dp"
             android:layout_gravity="center"
-            android:paddingTop="13sp"
+            android:paddingTop="10sp"
             android:paddingBottom="10sp"
             android:clipToPadding="false"
             android:dividerHeight="25sp"
-            android:divider="@android:color/transparent"
+            android:divider="@drawable/divider"
             android:background="@drawable/announcement_list_background"/>
     </LinearLayout>
 

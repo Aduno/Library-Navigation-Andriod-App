@@ -86,8 +86,7 @@ public class HomePageActivity extends AppCompatActivity {
         //---------------------------------- Search bar ----------------------------------//
 
         //Retrieves POI information from the database
-        locationList = new ArrayList<>();
-        ConnectionHelper.getDatabaseInfo(getApplicationContext(), items,URL,REQUEST_CODE_POI);
+        locationList = ConnectionHelper.getDatabaseInfo(getApplicationContext(),URL,REQUEST_CODE_POI);
         locationList.add("Printers");
         locationList.add("Elevator");
         //Populates the search bar with information
@@ -113,8 +112,7 @@ public class HomePageActivity extends AppCompatActivity {
 
         //------------------------------- Announcements ------------------------------//
         //Retrieves announcement info from the database
-        items = new ArrayList<>();
-        ConnectionHelper.getDatabaseInfo(getApplicationContext(), items,URL,REQUEST_CODE_ANNOUNCEMENT);
+        items = ConnectionHelper.getDatabaseInfo(getApplicationContext(),URL,REQUEST_CODE_ANNOUNCEMENT);
         //Populates the announcement list with the announcements
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items){
             @Override
@@ -126,8 +124,6 @@ public class HomePageActivity extends AppCompatActivity {
         };
         announcementList.setAdapter(adapter);
     }
-
-
 
     protected void openNavigation(){
 
