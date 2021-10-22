@@ -1,4 +1,4 @@
-package classes;
+package com.example.wayfinding.classes;
 
 import java.io.Serializable;
 

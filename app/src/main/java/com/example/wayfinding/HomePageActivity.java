@@ -1,21 +1,30 @@
 package com.example.wayfinding;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
+import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +34,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.wayfinding.classes.ConnectionHelper;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
 
@@ -33,38 +43,56 @@ import java.util.Locale;
 
 
 public class HomePageActivity extends AppCompatActivity {
-
+    private static final int REQUEST_CODE_ANNOUNCEMENT =0;
+    private static final int REQUEST_CODE_POI =1;
+    private static final int REQUEST_CODE_SPEECH_INPUT = 1;
     private ListView announcementList;
     private SearchableSpinner searchBar;
     private ArrayList<String> items;
     private ArrayAdapter<String> adapter;
     private SpeechRecognizer recognizer;
+    private Intent speechIntent;
+    private Button speechButton;
+    private ArrayList<String> locationList;
     //This URL has to be changed depending on the PC unless an external server with a static ip is setup
     private String URL = "http://192.168.1.18:8080";
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         announcementList = findViewById(R.id.announcement);
         searchBar = findViewById(R.id.search_bar);
-
-        //Checks permissions before installing the speech to text recognizer
-        //Initializes recognizer
-        //Based on tutorial from https://medium.com/voice-tech-podcast/android-speech-to-text-tutorial-8f6fa71606ac
+        speechButton = findViewById(R.id.speech_button);
 
 
+        // ------------------------- Initializes speech recognizer -------------------------//
+        // Based on tutorial from https://www.geeksforgeeks.org/how-to-convert-speech-to-text-in-android/
+        recognizer = SpeechRecognizer.createSpeechRecognizer(this);
+        speechIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        speechIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        speechIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        speechIntent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Speak the location");
 
-        //Sets up the search bar
-        //Need to communicate with the DB to get the POI
-        ArrayList<String> locationList = new ArrayList<>();
+        //Sets up listener for the speaker button
+        speechButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                speechToText(v);
+            }
+        });
+
+        //---------------------------------- Search bar ----------------------------------//
+
+        //Retrieves POI information from the database
+        locationList = new ArrayList<>();
+        ConnectionHelper.getDatabaseInfo(getApplicationContext(), items,URL,REQUEST_CODE_POI);
         locationList.add("Printers");
         locationList.add("Elevator");
-
-
+        //Populates the search bar with information
         searchBar.setAdapter(new ArrayAdapter<>(HomePageActivity.this,android.R.layout.simple_spinner_dropdown_item, locationList));
         searchBar.setTitle(getString(R.string.search_spinner_title));
-
         searchBar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -72,22 +100,22 @@ public class HomePageActivity extends AppCompatActivity {
 
                 //pass location info to algorithm interface
 
-
+                //Shows message to user
                 String msg = "Finding the best route to "+location+"...";
                 Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(HomePageActivity.this,NavigationScreen.class);
                 startActivity(intent);
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
 
-        //Need to populate the list with announcement information
+        //------------------------------- Announcements ------------------------------//
+        //Retrieves announcement info from the database
         items = new ArrayList<>();
-        getAnnouncements(items);
+        ConnectionHelper.getDatabaseInfo(getApplicationContext(), items,URL,REQUEST_CODE_ANNOUNCEMENT);
+        //Populates the announcement list with the announcements
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items){
             @Override
             public View getView(int position, View convertView, ViewGroup parent){
@@ -99,52 +127,36 @@ public class HomePageActivity extends AppCompatActivity {
         announcementList.setAdapter(adapter);
     }
 
-    /**
-     * Contacts DB and retreives annoucement information
-     * Based on tutorial from https://www.youtube.com/watch?v=GKyEJmCoK5s&t=273s by Sandip Bhattacharya
-     */
-    public void getAnnouncements(ArrayList<String> items){
-        //
-        URL = "http://192.168.1.18:8080/get_poi.php";
-        StringRequest req = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-            }
-        },new Response.ErrorListener(){
-            @Override
-            public void onErrorResponse(VolleyError e){
-                Toast.makeText(HomePageActivity.this,"Failed to connect to database", Toast.LENGTH_SHORT).show();
-            }
-        });
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        requestQueue.add(req);
 
-        items.add("The library will be closed from 6-8PM on October 16 for temporary repairs on the elevator");
-        items.add("Ann 2 The library will be closed from 6-8PM on October 16 for temporary repairs on the elevator");
-        items.add("Ann 4 The library will be closed from 6-8PM on October 16 for temporary repairs on the elevator");
-        items.add("Please note that you will need to be vaccinated to be on campus. You will need to present you student card and scan it at the entrance to enter the Morisset library");
-        items.add("During reading week, the operation hours of the library will be changed.\nThe hours will be from 7am-5pm on Mon-Fri, and 10am-5pm on the weekends\nThank you for using the Morriset library");
+
+    protected void openNavigation(){
+
     }
     /**
-     * Search bar functionality. It queries the DB for information regarding the points of interest and using the current position and the end position,
-     * calls on the pathfinding algorithm to find the optimal distance
-     */
-
-    /**
      * Speech to text functionality for the search bar
-     *
-     * based on tutorial from https://www.youtube.com/watch?v=zHgATbPcq04
      */
     public void speechToText(View v){
-        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Speak the location");
+        try {
+            startActivityForResult(speechIntent, REQUEST_CODE_SPEECH_INPUT);
+        }
+        catch (Exception e) {
+            Toast.makeText(HomePageActivity.this, "Failed. Check your microphone permissions with Google" , Toast.LENGTH_SHORT).show();
+        }
+    }
 
-        try{
-
-        }catch(Exception e){
-
+    /**
+     * Functions related to speech to text functionality
+     * Code from https://www.geeksforgeeks.org/how-to-convert-speech-to-text-in-android/
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE_SPEECH_INPUT){
+            if(resultCode == RESULT_OK && data!=null){
+                //Need to test if the result is within the list of possible location
+                ArrayList<String> result = data.getStringArrayListExtra(
+                        RecognizerIntent.EXTRA_RESULTS);
+            }
         }
     }
 }

@@ -20,54 +20,38 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.06" />
+        android:layout_weight="0.05" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.06">
+        android:layout_weight="0.075">
 
         <com.toptoche.searchablespinnerlibrary.SearchableSpinner
             android:id="@+id/search_bar"
-            android:layout_width="300dp"
+            android:layout_width="330dp"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:background="@drawable/searchbar_background"
+            android:prompt="@string/prompt_location"
             app:hintText="@string/prompt_location" />
 
         <Button
-            android:layout_width="40dp"
-            android:layout_height="45dp"
+            android:id="@+id/speech_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignRight="@id/search_bar"
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
-            android:background="@drawable/microphone_ic"
-            android:onClick="speechToText" />
+            android:background="@drawable/microphone_ic" />
 
     </RelativeLayout>
-
-
-
-<!--    <EditText-->
-<!--        android:id="@+id/editTextTextPersonName2"-->
-<!--        android:layout_width="300dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:fontFamily="@font/amethysta"-->
-<!--        android:background="@drawable/searchbar_background"-->
-<!--        android:ems="10"-->
-<!--        android:hint="@string/prompt_location"-->
-<!--        android:inputType="textPersonName"-->
-<!--        android:minHeight="48dp"-->
-<!--        android:paddingStart="10dp"-->
-<!--        android:textColorHint="#4C4C4C"-->
-<!--        tools:ignore="RtlSymmetry" />-->
 
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.06" />
+        android:layout_weight="0.055" />
 
     <LinearLayout
         android:layout_width="match_parent"
