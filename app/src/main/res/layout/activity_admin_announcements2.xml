@@ -89,9 +89,9 @@
             android:background="@drawable/announcement_list_background"
             android:clipToPadding="false"
             android:divider="@drawable/divider"
-            android:dividerHeight="25sp"
+            android:dividerHeight="40sp"
             android:paddingTop="13sp"
-            android:paddingBottom="10sp" />
+            android:paddingBottom="13sp" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
