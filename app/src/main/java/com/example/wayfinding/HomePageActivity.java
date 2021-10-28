@@ -50,7 +50,7 @@ public class HomePageActivity extends AppCompatActivity {
     private SearchableSpinner searchBar;
     private ArrayList<String> items;
     private ArrayAdapter<String> adapter;
-    private SpeechRecognizer recognizer;
+
     private Intent speechIntent;
     private Button speechButton;
     private ArrayList<String> locationList;
@@ -69,6 +69,7 @@ public class HomePageActivity extends AppCompatActivity {
 
         // ------------------------- Initializes speech recognizer -------------------------//
         // Based on tutorial from https://www.geeksforgeeks.org/how-to-convert-speech-to-text-in-android/
+        SpeechRecognizer recognizer;
         recognizer = SpeechRecognizer.createSpeechRecognizer(this);
         speechIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         speechIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
@@ -88,7 +89,7 @@ public class HomePageActivity extends AppCompatActivity {
         //Retrieves POI information from the database
         locationList = ConnectionHelper.getDatabaseInfo(getApplicationContext(),URL,REQUEST_CODE_POI);
         locationList.add("Printers");
-        locationList.add("Elevator");
+        locationList.add("Elevators");
         //Populates the search bar with information
         searchBar.setAdapter(new ArrayAdapter<>(HomePageActivity.this,android.R.layout.simple_spinner_dropdown_item, locationList));
         searchBar.setTitle(getString(R.string.search_spinner_title));
@@ -99,11 +100,7 @@ public class HomePageActivity extends AppCompatActivity {
 
                 //pass location info to algorithm interface
 
-                //Shows message to user
-                String msg = "Finding the best route to "+location+"...";
-                Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(HomePageActivity.this,NavigationScreen.class);
-                startActivity(intent);
+                openNavigation(location);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -125,8 +122,16 @@ public class HomePageActivity extends AppCompatActivity {
         announcementList.setAdapter(adapter);
     }
 
-    protected void openNavigation(){
-
+    /**
+     * Starts the intent for navigation and displays a message for the user
+     * @param location desired location of the user
+     */
+    protected void openNavigation(String location){
+        String msg = "Finding the best route to "+location+"...";
+        Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this,NavigationScreen.class);
+        startActivity(intent);
+        finish(); //Added to stop a bug where the navigation wont reopen after backing once and trying to get back to navigation
     }
     /**
      * Speech to text functionality for the search bar
@@ -152,6 +157,11 @@ public class HomePageActivity extends AppCompatActivity {
                 //Need to test if the result is within the list of possible location
                 ArrayList<String> result = data.getStringArrayListExtra(
                         RecognizerIntent.EXTRA_RESULTS);
+                String formatted = result.get(0).substring(0,1).toUpperCase() + result.get(0).substring(1);
+                Log.d("voiceoutput",formatted);
+                if(locationList.contains(formatted)){
+                    openNavigation(result.get(0));
+                }
             }
         }
     }

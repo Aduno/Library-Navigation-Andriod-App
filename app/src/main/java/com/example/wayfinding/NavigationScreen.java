@@ -12,4 +12,5 @@ public class NavigationScreen extends AppCompatActivity {
         setContentView(R.layout.activity_navigation_screen);
 
     }
+
 }
