@@ -25,7 +25,7 @@ public class AdminAnnouncement extends AppCompatActivity {
         ArrayList<String> items = new ArrayList<>();
         items.add("The library will be closed from 6-8PM on October 16 for temporary repairs on the elevator");
         items.add("Ann 2 The library will be closed from 6-8PM on October 16 for temporary repairs on the elevator");
-        items.add("Ann 4 The library will be closed from 6-8PM on October 16 for temporary repairs on the elevator");
+        items.add("Ann 4 The library will be closed from 6-8PM on Octobgier 16 for temporary repairs on the elevator");
         items.add("Please note that you will need to be vaccinated to be on campus. You will need to present you student card and scan it at the entrance to enter the Morisset library");
         items.add("During reading week, the operation hours of the library will be changed.\nThe hours will be from 7am-5pm on Mon-Fri, and 10am-5pm on the weekends\nThank you for using the Morriset library");
         ArrayAdapter<String> adp = new ArrayAdapter<String>(AdminAnnouncement.this,android.R.layout.simple_list_item_1, items) {
