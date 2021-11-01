@@ -15,17 +15,16 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ToggleButton;
 
+import com.example.wayfinding.classes.UserSettings;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private ToggleButton lightButton;
     private ToggleButton soundButton;
-    private ConstraintLayout main;
-    private ConstraintLayout login;
-    private ConstraintLayout nav;
-    private LinearLayout admin;
-    private LinearLayout home;
+    private LinearLayout main;
+    protected UserSettings userSettings;
 
 
     @Override
@@ -33,35 +32,33 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Instantiate the user setting
+        //In the future, might be good to save this into local storage so settings dont revert every
+        userSettings = new UserSettings(false,false);
+
         main = findViewById(R.id.mainFrame);
         lightButton = findViewById(R.id.toggleLight);
-
-
+        soundButton = findViewById(R.id.soundIcon);
         lightButton.setText(null);
         lightButton.setTextOn(null);
         lightButton.setTextOff(null);
-
-        main = findViewById(R.id.mainFrame);
-        login = findViewById(R.id.loginFrame);
-        admin = findViewById(R.id.adminFrame);
-        home = findViewById(R.id.homeFrame);
-        nav = findViewById(R.id.navFrame);
-
-        soundButton = findViewById(R.id.soundIcon);
 
         soundButton.setText(null);
         soundButton.setTextOn(null);
         soundButton.setTextOff(null);
 
 
-
         soundButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    soundButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_baseline_volume_up_24, null));
-                } else {
                     soundButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_baseline_volume_off_24, null));
+                    //Play sound enabled audio cue
+                    userSettings.setAudioMode(true);
+                } else {
+                    soundButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_baseline_volume_up_24, null));
+                    //Play sound disable audio cue
+                    userSettings.setAudioMode(false);
                 }
             }
         });
@@ -73,17 +70,12 @@ public class MainActivity extends AppCompatActivity {
                 if (isChecked) {
                     lightButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_baseline_brightness_high_24, null));
                     main.setBackgroundColor(Color.rgb(100, 100, 100));
-                    login.setBackgroundColor(Color.rgb(100, 100, 100));
-                    admin.setBackgroundColor(Color.rgb(100, 100, 100));
-                    home.setBackgroundColor(Color.rgb(100, 100, 100));
-                    nav.setBackgroundColor(Color.rgb(100, 100, 100));
+                    userSettings.setDarkMode(true);
+
                 } else {
                     lightButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_baseline_brightness_3_24, null));
                     main.setBackgroundColor(Color.WHITE);
-                    login.setBackgroundColor(Color.WHITE);
-                    admin.setBackgroundColor(Color.rgb(100, 100, 100));
-                    home.setBackgroundColor(Color.rgb(100, 100, 100));
-                    nav.setBackgroundColor(Color.rgb(100, 100, 100));
+                    userSettings.setDarkMode(false);
                 }
             }
         });
@@ -93,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
         //Sends the user to navigation/home page
         public void goToHome (View v){
             Intent intent = new Intent(MainActivity.this, HomePageActivity.class);
+            UserSettings settings = new UserSettings(true,false);
+            intent.putExtra("here",settings);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
@@ -103,9 +97,4 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }
-
-        public void toggleSound (View v){
-            ImageButton sound = findViewById(R.id.soundIcon);
-        }
-
     }

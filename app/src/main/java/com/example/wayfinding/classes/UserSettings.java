@@ -16,4 +16,14 @@ public class UserSettings implements Serializable {
         this.darkMode = darkMode;
         this.audioMode = audioMode;
     }
+
+    public void setDarkMode(boolean b){
+        darkMode = b;
+    }
+    public void setAudioMode(boolean b){
+        audioMode = b;
+    }
+    public void setFrench(boolean b){
+        french = b;
+    }
 }
