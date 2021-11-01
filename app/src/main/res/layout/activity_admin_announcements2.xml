@@ -21,12 +21,12 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.06" />
+        android:layout_weight="0.04" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.08">
+        android:layout_weight="0.06">
 
         <TextView
             android:id="@+id/textView5"
@@ -62,7 +62,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.66"
+        android:layout_weight="0.71"
         android:orientation="vertical">
 
         <TextView
@@ -101,16 +101,16 @@
                 android:id="@+id/button"
                 android:layout_width="130dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="44dp"
                 android:background="@drawable/roundedbutton"
                 android:backgroundTint="#99102f"
                 android:onClick="goToHome"
-                android:text="Sign Off"
+                android:text="@string/sign_off"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:visibility="visible" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
