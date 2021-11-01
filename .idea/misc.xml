@@ -19,12 +19,16 @@
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable-anydpi/ic_darkmode.xml" value="0.226953125" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable-anydpi/ic_soundon.xml" value="0.226953125" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.166015625" />
+        <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/add_button.xml" value="0.2598958333333333" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/announcement_list_background.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/announcement_title_background.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/delete.xml" value="0.2598958333333333" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/divider.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/ic_baseline_brightness_3_24.xml" value="0.2598958333333333" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/ic_baseline_brightness_high_24.xml" value="0.226953125" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.226953125" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.287109375" />
+        <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/ic_baseline_volume_off_24.xml" value="0.2598958333333333" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/ic_baseline_volume_up_24.xml" value="0.226953125" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/ic_homebutton_background.xml" value="0.166015625" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/ic_launcher_background.xml" value="0.166015625" />
@@ -62,15 +66,6 @@
         <entry key="..\:/Users/joonl/Documents/Programming/Library-Navigation-Andriod/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/joonl/Documents/Programming/Library-Navigation-Andriod/app/src/main/res/layout/activity_navigation_screen.xml" value="0.13125" />
         <entry key="..\:/Users/joonl/Documents/Programming/Library-Navigation-Andriod/app/src/main/res/layout/fragment_first.xml" value="0.19427083333333334" />
-        <entry key="..\:/Users/tu02_/OneDrive/Documents/GitHub/Library-Navigation-Andriod/app/src/main/res/drawable/ic_baseline_brightness_3_24.xml" value="0.31614583333333335" />
-        <entry key="..\:/Users/tu02_/OneDrive/Documents/GitHub/Library-Navigation-Andriod/app/src/main/res/drawable/ic_baseline_brightness_high_24.xml" value="0.31614583333333335" />
-        <entry key="..\:/Users/tu02_/OneDrive/Documents/GitHub/Library-Navigation-Andriod/app/src/main/res/drawable/ic_baseline_volume_off_24.xml" value="0.15364583333333334" />
-        <entry key="..\:/Users/tu02_/OneDrive/Documents/GitHub/Library-Navigation-Andriod/app/src/main/res/layout/activity_admin_announcements2.xml" value="0.3" />
-        <entry key="..\:/Users/tu02_/OneDrive/Documents/GitHub/Library-Navigation-Andriod/app/src/main/res/layout/activity_home_page.xml" value="0.3" />
-        <entry key="..\:/Users/tu02_/OneDrive/Documents/GitHub/Library-Navigation-Andriod/app/src/main/res/layout/activity_login.xml" value="0.29936594202898553" />
-        <entry key="..\:/Users/tu02_/OneDrive/Documents/GitHub/Library-Navigation-Andriod/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/tu02_/OneDrive/Documents/GitHub/Library-Navigation-Andriod/app/src/main/res/layout/activity_navigation_screen.xml" value="0.1" />
-        <entry key="..\:/Users/tu02_/OneDrive/Documents/GitHub/Library-Navigation-Andriod/app/src/main/res/layout/fragment_first.xml" value="0.1953125" />
       </map>
     </option>
   </component>

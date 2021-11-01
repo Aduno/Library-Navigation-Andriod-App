@@ -39,9 +39,9 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.393" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -54,12 +54,13 @@
             android:id="@+id/button"
             android:layout_width="130dp"
             android:layout_height="40dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/roundedbutton"
             android:backgroundTint="#99102f"
             android:onClick="goToSignin"
             android:text="@string/action_sign_in_short"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#FFFFFF"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.501"
@@ -72,7 +73,6 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="60dp"
-            android:layout_marginTop="4dp"
             android:background="@drawable/ic_baseline_volume_up_24"
             android:scaleX="0.7"
             android:scaleY="0.7"
@@ -84,7 +84,6 @@
             android:id="@+id/homeButton"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginTop="4dp"
             android:background="@drawable/ic_baseline_home_24"
             android:onClick="goToHome"
             android:scaleX="0.7"
@@ -98,7 +97,6 @@
             android:id="@+id/toggleLight"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginTop="4dp"
             android:layout_marginEnd="60dp"
             android:background="@drawable/ic_baseline_brightness_3_24"
             android:scaleX="0.7"
