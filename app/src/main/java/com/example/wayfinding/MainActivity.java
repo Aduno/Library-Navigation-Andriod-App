@@ -85,8 +85,7 @@ public class MainActivity extends AppCompatActivity {
         //Sends the user to navigation/home page
         public void goToHome (View v){
             Intent intent = new Intent(MainActivity.this, HomePageActivity.class);
-            UserSettings settings = new UserSettings(true,false);
-            intent.putExtra("here",settings);
+            intent.putExtra("key",userSettings);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }

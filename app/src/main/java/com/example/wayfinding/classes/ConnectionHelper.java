@@ -55,4 +55,27 @@ public class ConnectionHelper {
         items.add("During reading week, the operation hours of the library will be changed.\nThe hours will be from 7am-5pm on Mon-Fri, and 10am-5pm on the weekends\nThank you for using the Morriset library");
         return items;
     }
+
+
+    public static void addAnnouncement(Context context, String URL, int requestCode){
+        ArrayList<String> items = new ArrayList<>();
+
+        //Change this to the right php file
+        URL = URL+"/get_announcement.php";
+
+        StringRequest req = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                items.add(response);
+            }
+        },new Response.ErrorListener(){
+            @Override
+            public void onErrorResponse(VolleyError e){
+                Toast.makeText(context,"Failed to connect to database", Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(req);
+
+    }
 }

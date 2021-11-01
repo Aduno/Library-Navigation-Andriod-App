@@ -38,13 +38,12 @@
             android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button2"
+            app:layout_constraintStart_toEndOf="@+id/add_announcement_button"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/add_announcement_button"
             android:layout_width="60dp"
-
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_marginStart="56dp"

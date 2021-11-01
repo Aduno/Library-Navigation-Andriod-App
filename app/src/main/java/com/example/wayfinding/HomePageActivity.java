@@ -23,6 +23,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -35,6 +36,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.wayfinding.classes.ConnectionHelper;
+import com.example.wayfinding.classes.UserSettings;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
 
@@ -46,6 +48,8 @@ public class HomePageActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_ANNOUNCEMENT =0;
     private static final int REQUEST_CODE_POI =1;
     private static final int REQUEST_CODE_SPEECH_INPUT = 1;
+
+    private LinearLayout homeFrame;
     private ListView announcementList;
     private SearchableSpinner searchBar;
     private ArrayList<String> items;
@@ -65,7 +69,16 @@ public class HomePageActivity extends AppCompatActivity {
         announcementList = findViewById(R.id.announcement);
         searchBar = findViewById(R.id.search_bar);
         speechButton = findViewById(R.id.speech_button);
+        homeFrame = findViewById(R.id.homeFrame);
 
+
+        Intent intent = getIntent();
+
+        UserSettings settings = (UserSettings) intent.getSerializableExtra("key");
+
+        if(settings.getDarkMode()){
+           //Set background of homeframe background to gray or whatever color
+        }
 
         // ------------------------- Initializes speech recognizer -------------------------//
         // Based on tutorial from https://www.geeksforgeeks.org/how-to-convert-speech-to-text-in-android/
