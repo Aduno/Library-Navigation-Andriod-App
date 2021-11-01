@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeFrame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:context=".HomePageActivity"
-    android:weightSum="1">
+    android:weightSum="1"
+    tools:context=".HomePageActivity">
 
     <ImageView
         android:id="@+id/imageView3"
@@ -56,8 +57,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        android:layout_weight="0.69">
+        android:layout_weight="0.69"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView"
@@ -65,11 +66,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/announcement_title_background"
-            android:gravity="center"
-            android:text="@string/announcement_title"
             android:fontFamily="@font/amethysta"
+            android:gravity="center"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
+            android:text="@string/announcement_title"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -78,14 +79,14 @@
             android:id="@+id/announcement"
             android:layout_width="340dp"
             android:layout_height="match_parent"
-            android:layout_marginBottom="30dp"
             android:layout_gravity="center"
-            android:paddingTop="20sp"
-            android:paddingBottom="15sp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/announcement_list_background"
             android:clipToPadding="false"
-            android:dividerHeight="45sp"
             android:divider="@drawable/divider"
-            android:background="@drawable/announcement_list_background"/>
+            android:dividerHeight="45sp"
+            android:paddingTop="20sp"
+            android:paddingBottom="15sp" />
     </LinearLayout>
 
 </LinearLayout>
