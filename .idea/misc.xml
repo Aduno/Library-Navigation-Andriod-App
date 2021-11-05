@@ -37,6 +37,7 @@
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/ic_main_logo_background.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/ic_soundon.xml" value="0.226953125" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/microphone_ic.xml" value="0.3026041666666667" />
+        <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/popup_background.xml" value="0.22708333333333333" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/roundedbutton.xml" value="0.226953125" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/searchbar_background.xml" value="0.3828125" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/textborder.xml" value="0.226953125" />
@@ -49,6 +50,8 @@
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/layout/activity_navigation_screen.xml" value="0.18" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/layout/fragment_first.xml" value="0.2907608695652174" />
+        <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/layout/popup_admin.xml" value="0.24114583333333334" />
+        <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/layout/popup_background.xml" value="0.2109375" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/menu/bottom_menu.xml" value="0.275" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/mipmap-anydpi-v26/ic_homebutton.xml" value="0.226953125" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/mipmap-anydpi-v26/ic_homebutton_round.xml" value="0.226953125" />
