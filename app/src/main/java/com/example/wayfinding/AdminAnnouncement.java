@@ -20,7 +20,7 @@ public class AdminAnnouncement extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_announcements2);
+        setContentView(R.layout.activity_admin_announcements);
 
         announcementList = findViewById(R.id.announcement);
         addAnnouncementButton = findViewById(R.id.add_announcement_button);
@@ -49,7 +49,7 @@ public class AdminAnnouncement extends AppCompatActivity {
 
     public void addAnnouncementClick(View v){
         //Create pop up
-
+        startActivity(new Intent(AdminAnnouncement.this, Pop.class));
         //Get information from the fields
 
         //Call the connection helper to upload that information to the DB
