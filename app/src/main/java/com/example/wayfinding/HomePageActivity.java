@@ -10,6 +10,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
@@ -78,7 +79,13 @@ public class HomePageActivity extends AppCompatActivity {
 
         if(settings.getDarkMode()){
            //Set background of homeframe background to gray or whatever color
+            homeFrame.setBackgroundColor(Color.rgb(100, 100, 100));
+
         }
+        else{
+            homeFrame.setBackgroundColor(Color.WHITE);
+        }
+
 
         // ------------------------- Initializes speech recognizer -------------------------//
         // Based on tutorial from https://www.geeksforgeeks.org/how-to-convert-speech-to-text-in-android/

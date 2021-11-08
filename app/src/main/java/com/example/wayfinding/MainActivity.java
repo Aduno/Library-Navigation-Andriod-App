@@ -91,9 +91,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //Sends the user to login page
-        public void goToSignin (View v){
+        public void goToSignin (View v) {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            intent.putExtra("key",userSettings);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        }
+
+        public void goToNav (View v){
+            Intent intent = new Intent(MainActivity.this, NavigationScreen.class);
+            intent.putExtra("key",userSettings);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
         }
     }

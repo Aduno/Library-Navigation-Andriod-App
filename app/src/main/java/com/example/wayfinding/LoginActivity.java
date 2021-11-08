@@ -3,15 +3,21 @@ package com.example.wayfinding;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.example.wayfinding.classes.UserSettings;
+
 
 public class LoginActivity extends AppCompatActivity {
     private EditText usernameInput;
     private EditText passwordInput;
+    private LinearLayout loginFrame;
     private Button loginButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +26,21 @@ public class LoginActivity extends AppCompatActivity {
 
         usernameInput = findViewById(R.id.username);
         passwordInput = findViewById(R.id.password);
+        loginFrame = findViewById(R.id.loginFrame);
+
+
+        Intent intent = getIntent();
+
+        UserSettings settings = (UserSettings) intent.getSerializableExtra("key");
+
+        if(settings.getDarkMode()){
+            //Set background of login background to gray or whatever color
+            loginFrame.setBackgroundColor(Color.rgb(100, 100, 100));
+
+        }
+        else{
+            loginFrame.setBackgroundColor(Color.WHITE);
+        }
     }
     public void login(View v){
         String username = usernameInput.getText().toString();
