@@ -25,4 +25,8 @@
     <string name="welcome_text_2">To the</string>
     <string name="welcome_text_3">Morisset</string>
     <string name="welcome_text_4">Library</string>
+
+    <string name="prompt_announce_title">Announcement Title</string>
+    <string name="prompt_announce">Enter Announcement</string>
+    <string name="publish_button">Publish</string>
 </resources>

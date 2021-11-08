@@ -29,6 +29,9 @@
         <activity
             android:name=".NavigationScreen"
             android:exported="true" />
+        <activity android:name=".Pop"
+            android:exported="true"
+            android:theme="@style/PersonalTheme.CustomTheme"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
