@@ -11,6 +11,8 @@ import androidx.lifecycle.Observer
 import com.example.wayfinding.R
 import org.altbeacon.beacon.*
 
+// Code from the library reference for android beacon byu David Young
+// https://github.com/davidgyoung/android-beacon-library-reference-kotlin
 class NavigationScreen : AppCompatActivity() {
 //    lateinit var region: Region
 
@@ -20,24 +22,8 @@ class NavigationScreen : AppCompatActivity() {
         checkPermissions()
         val beaconManager = BeaconManager.getInstanceForApplication(this)
 
-        // By default the AndroidBeaconLibrary will only find AltBeacons.  If you wish to make it
-        // find a different type of beacon, you must specify the byte layout for that beacon's
-        // advertisement with a line like below.  The example shows how to find a beacon with the
-        // same byte layout as AltBeacon but with a beaconTypeCode of 0xaabb.  To find the proper
-        // layout expression for other beacon types, do a web search for "setBeaconLayout"
-        // including the quotes.
-        //
-//        beaconManager.getBeaconParsers().clear();
         beaconManager.getBeaconParsers().add(BeaconParser().
                 setBeaconLayout("m:0-1=4c00,i:2-24v,p:24-24"));
-
-
-        // By default the AndroidBeaconLibrary will only find AltBeacons.  If you wish to make it
-        // find a different type of beacon like Eddystone or iBeacon, you must specify the byte layout
-        // for that beacon's advertisement with a line like below.
-        //
-        // If you don't care about AltBeacon, you can clear it from the defaults:
-//        beaconManager.getBeaconParsers().clear()
 
         // The example shows how to find iBeacon.
         beaconManager.getBeaconParsers().add(
@@ -45,12 +31,8 @@ class NavigationScreen : AppCompatActivity() {
 
         // enabling debugging will send lots of verbose debug information from the library to Logcat
         // this is useful for troubleshooting problmes
-         BeaconManager.setDebug(true)
+//         BeaconManager.setDebug(true)
 
-
-        // Ranging callbacks will drop out if no beacons are detected
-        // Monitoring callbacks will be delayed by up to 25 minutes on region exit
-        // beaconManager.setIntentScanningStrategyEnabled(true)
 
         // The code below will start "monitoring" for beacons matching the region definition below
         // the region definition is a wildcard that matches all beacons regardless of identifiers.
@@ -77,7 +59,8 @@ class NavigationScreen : AppCompatActivity() {
             Log.d("output", "ID: ${beacon.id1} rssi: ${beacon.rssi} distance(m): ${beacon.distance}m".trimIndent())
         }
 
-    } //        ViewModel viewModel = BeaconManager.getInstanceForApplication(this).getRegionViewModel(beaconApplication.region);
+    }
+    //        ViewModel viewModel = BeaconManager.getInstanceForApplication(this).getRegionViewModel(beaconApplication.region);
 
     val centralRangingObserver = Observer<Collection<Beacon>> { beacons ->
         Log.d(TAG, "Ranged: ${beacons.count()} beacons")
