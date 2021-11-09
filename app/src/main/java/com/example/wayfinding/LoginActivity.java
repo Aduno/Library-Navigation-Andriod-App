@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     public void login(View v){
         String username = usernameInput.getText().toString();
         String password = passwordInput.getText().toString();
-        if(username.equals("admin")&&password.equals("libraryadmin")){
+        if(username.equals("admin")&&password.equals("admin")){
                 //Lets the user know that login was successful
                 Toast.makeText(getApplicationContext(),"Logged in as admin",Toast.LENGTH_SHORT).show();
                 //Sends the user to the main page
