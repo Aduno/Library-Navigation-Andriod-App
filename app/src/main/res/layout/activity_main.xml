@@ -104,7 +104,7 @@
         android:layout_weight="0.27">
 
         <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/switchCompat"
+            android:id="@+id/languageSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/amethysta"
@@ -114,6 +114,7 @@
             android:thumb="@drawable/language_toggle_thumb"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:showText="true"
             app:track="@drawable/language_toggle_track" />
         <Button
@@ -160,7 +161,7 @@
             app:layout_constraintEnd_toStartOf="@+id/toggleLight"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/soundIcon"
-            app:layout_constraintTop_toBottomOf="@+id/switchCompat"
+            app:layout_constraintTop_toBottomOf="@+id/languageSwitch"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <ToggleButton
