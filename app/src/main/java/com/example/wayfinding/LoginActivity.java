@@ -1,6 +1,7 @@
 package com.example.wayfinding;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -27,7 +28,6 @@ public class LoginActivity extends AppCompatActivity {
         usernameInput = findViewById(R.id.username);
         passwordInput = findViewById(R.id.password);
         loginFrame = findViewById(R.id.loginFrame);
-
 
         Intent intent = getIntent();
 
