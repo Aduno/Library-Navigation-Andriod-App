@@ -13,7 +13,7 @@
         android:id="@+id/imageView8"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.25"
+        android:layout_weight="0.23"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
         app:srcCompat="@drawable/uottawa_rounded" />
@@ -101,8 +101,21 @@
         android:id="@+id/navigationButtons"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.25">
+        android:layout_weight="0.27">
 
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchCompat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/amethysta"
+            android:textColor="@color/black"
+            android:textOff="EN"
+            android:textOn="FR"
+            android:thumb="@drawable/language_toggle_thumb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:showText="true"
+            app:track="@drawable/language_toggle_track" />
         <Button
             android:id="@+id/button"
             android:layout_width="130dp"
@@ -125,7 +138,8 @@
             android:id="@+id/soundIcon"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginStart="84dp"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="34dp"
             android:background="@drawable/ic_baseline_volume_up_24"
             android:scaleX="0.7"
             android:scaleY="0.7"
@@ -138,20 +152,23 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="1dp"
+            android:layout_marginTop="4dp"
             android:background="@drawable/ic_baseline_home_24"
             android:onClick="goToHome"
             android:scaleX="0.7"
             android:scaleY="0.7"
             app:layout_constraintEnd_toStartOf="@+id/toggleLight"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/soundIcon"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switchCompat"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <ToggleButton
             android:id="@+id/toggleLight"
             android:layout_width="80dp"
             android:layout_height="77dp"
-            android:layout_marginEnd="84dp"
+            android:layout_marginTop="34dp"
+            android:layout_marginEnd="80dp"
             android:background="@drawable/ic_baseline_brightness_3_24"
             android:scaleX="0.7"
             android:scaleY="0.7"
@@ -160,107 +177,3 @@
             tools:ignore="SpeakableTextPresentCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
-<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:id="@+id/mainFrame"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    android:background="@color/white"-->
-<!--    tools:context=".MainActivity">-->
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:orientation="vertical"-->
-<!--        android:weightSum="1">-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/imageView8"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:layout_weight="0.25"-->
-<!--            android:paddingTop="20dp"-->
-<!--            android:paddingBottom="20dp"-->
-<!--            app:srcCompat="@drawable/uottawa_rounded" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/imageView11"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:layout_weight="0.50"-->
-<!--            android:scaleType="fitStart"-->
-<!--            app:srcCompat="@drawable/uottawa_welcome_text" />-->
-
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:id="@+id/navigationButtons"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:layout_weight="0.25">-->
-
-<!--            <Button-->
-<!--                android:id="@+id/button"-->
-<!--                android:layout_width="130dp"-->
-<!--                android:layout_height="40dp"-->
-<!--                android:layout_marginTop="12dp"-->
-<!--                android:background="@drawable/roundedbutton"-->
-<!--                android:backgroundTint="#99102f"-->
-<!--                android:onClick="goToSignin"-->
-<!--                android:text="@string/action_sign_in_short"-->
-<!--                android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
-<!--                android:textSize="20sp"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.498"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/soundIcon"-->
-<!--                tools:visibility="visible" />-->
-
-<!--            <ToggleButton-->
-<!--                android:id="@+id/soundIcon"-->
-<!--                android:layout_width="80dp"-->
-<!--                android:layout_height="80dp"-->
-<!--                android:layout_marginStart="2dp"-->
-<!--                android:layout_marginTop="4dp"-->
-<!--                android:layout_marginEnd="81dp"-->
-<!--                android:background="@drawable/ic_baseline_volume_up_24"-->
-<!--                android:scaleX="0.7"-->
-<!--                android:scaleY="0.7"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/toggleLight"-->
-<!--                app:layout_constraintHorizontal_bias="0.375"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/homeButton"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                tools:ignore="SpeakableTextPresentCheck" />-->
-
-
-<!--            <ImageButton-->
-<!--                android:id="@+id/homeButton"-->
-<!--                android:layout_width="80dp"-->
-<!--                android:layout_height="80dp"-->
-<!--                android:layout_marginStart="80dp"-->
-<!--                android:layout_marginTop="4dp"-->
-<!--                android:background="@drawable/ic_baseline_home_24"-->
-<!--                android:onClick="goToHome"-->
-<!--                android:scaleX="0.7"-->
-<!--                android:scaleY="0.7"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                tools:ignore="SpeakableTextPresentCheck" />-->
-
-<!--            <ToggleButton-->
-<!--                android:id="@+id/toggleLight"-->
-<!--                android:layout_width="80dp"-->
-<!--                android:layout_height="80dp"-->
-<!--                android:layout_marginTop="4dp"-->
-<!--                android:layout_marginEnd="80dp"-->
-<!--                android:background="@drawable/ic_baseline_brightness_3_24"-->
-<!--                android:scaleX="0.7"-->
-<!--                android:scaleY="0.7"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                tools:ignore="SpeakableTextPresentCheck" />-->
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-<!--    </LinearLayout>-->
-
-<!--    &lt;!&ndash;        android:contentDescription="@strings/todo"&ndash;&gt;-->
-
-<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
