@@ -36,7 +36,6 @@ public class Pop extends Activity{
         int height = dm.heightPixels;
 
         getWindow().setLayout((int)(width*.85),(int)(height*.80));
-
     }
 
     public void onclick(View view) {
@@ -81,5 +80,4 @@ public class Pop extends Activity{
 
         };
     }
-
 }

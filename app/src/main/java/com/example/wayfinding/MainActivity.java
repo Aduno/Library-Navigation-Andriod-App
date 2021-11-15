@@ -2,17 +2,20 @@ package com.example.wayfinding;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.example.wayfinding.classes.UserSettings;
@@ -25,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private ToggleButton soundButton;
     private LinearLayout main;
     protected UserSettings userSettings;
-
+    private SwitchCompat languageToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,15 @@ public class MainActivity extends AppCompatActivity {
         main = findViewById(R.id.mainFrame);
         lightButton = findViewById(R.id.toggleLight);
         soundButton = findViewById(R.id.soundIcon);
+        languageToggle = findViewById(R.id.languageSwitch);
+
+        languageToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                userSettings.setFrench(b);
+            }
+        });
+
         lightButton.setText(null);
         lightButton.setTextOn(null);
         lightButton.setTextOff(null);
@@ -91,9 +103,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //Sends the user to login page
-        public void goToSignin (View v){
+        public void goToSignin (View v) {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            intent.putExtra("key",userSettings);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        }
+
+        public void goToNav (View v){
+            Intent intent = new Intent(MainActivity.this, NavigationScreen.class);
+            intent.putExtra("key",userSettings);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
         }
     }
