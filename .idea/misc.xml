@@ -41,6 +41,7 @@
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/popup_background.xml" value="0.22708333333333333" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/roundedbutton.xml" value="0.226953125" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/searchbar_background.xml" value="0.3828125" />
+        <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/text_outline.xml" value="0.234375" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/textborder.xml" value="0.226953125" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/underline_box.xml" value="0.226953125" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/drawable/welcome_text.xml" value="0.226953125" />
@@ -63,10 +64,6 @@
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/mipmap-anydpi-v26/ic_logo_round.xml" value="0.226953125" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/mipmap-anydpi-v26/ic_main_logo.xml" value="0.226953125" />
         <entry key="..\:/Users/John/Desktop/Programming/GNG2101/Wayfinding/app/src/main/res/xml/network_security_config.xml" value="0.1578125" />
-        <entry key="..\:/Users/LENOVO/Desktop/prototype/Library-Navigation-Andriod/app/src/main/res/layout/activity_home_page.xml" value="0.16259057971014493" />
-        <entry key="..\:/Users/LENOVO/Desktop/prototype/Library-Navigation-Andriod/app/src/main/res/layout/activity_main.xml" value="0.16259057971014493" />
-        <entry key="..\:/Users/LENOVO/Desktop/prototype/Library-Navigation-Andriod/app/src/main/res/layout/activity_navigation_screen.xml" value="0.1" />
-        <entry key="..\:/Users/LENOVO/Desktop/prototype/Library-Navigation-Andriod/app/src/main/res/layout/popup_admin.xml" value="0.176" />
         <entry key="..\:/Users/joonl/Documents/Programming/Library-Navigation-Andriod/app/src/main/res/drawable/delete.xml" value="0.21041666666666667" />
         <entry key="..\:/Users/joonl/Documents/Programming/Library-Navigation-Andriod/app/src/main/res/drawable/ic_baseline_brightness_3_24.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/joonl/Documents/Programming/Library-Navigation-Andriod/app/src/main/res/drawable/ic_baseline_brightness_high_24.xml" value="0.14635416666666667" />
@@ -75,18 +72,6 @@
         <entry key="..\:/Users/joonl/Documents/Programming/Library-Navigation-Andriod/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/joonl/Documents/Programming/Library-Navigation-Andriod/app/src/main/res/layout/activity_navigation_screen.xml" value="0.13125" />
         <entry key="..\:/Users/joonl/Documents/Programming/Library-Navigation-Andriod/app/src/main/res/layout/fragment_first.xml" value="0.19427083333333334" />
-        <entry key="..\:/Users/joonl/OneDrive - University of Ottawa/University/2021_4_Fall/GNG2101/Deliv/Library-Navigation-Andriod/app/src/main/res/drawable/ic_baseline_brightness_high_24.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/joonl/OneDrive - University of Ottawa/University/2021_4_Fall/GNG2101/Deliv/Library-Navigation-Andriod/app/src/main/res/drawable/language_toggle_thumb.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/joonl/OneDrive - University of Ottawa/University/2021_4_Fall/GNG2101/Deliv/Library-Navigation-Andriod/app/src/main/res/drawable/language_toggle_track.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/joonl/OneDrive - University of Ottawa/University/2021_4_Fall/GNG2101/Deliv/Library-Navigation-Andriod/app/src/main/res/layout/activity_login.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/joonl/OneDrive - University of Ottawa/University/2021_4_Fall/GNG2101/Deliv/Library-Navigation-Andriod/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/joonl/OneDrive - University of Ottawa/University/2021_4_Fall/GNG2101/Deliv/Library-Navigation-Andriod/app/src/main/res/layout/language_toggle_track.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/tu02_/OneDrive/Documents/GitHub/Library-Navigation-Andriod/app/src/main/res/layout/activity_admin_announcements2.xml" value="0.24818840579710144" />
-        <entry key="..\:/Users/tu02_/OneDrive/Documents/GitHub/Library-Navigation-Andriod/app/src/main/res/layout/activity_home_page.xml" value="0.24818840579710144" />
-        <entry key="..\:/Users/tu02_/OneDrive/Documents/GitHub/Library-Navigation-Andriod/app/src/main/res/layout/activity_login.xml" value="0.1" />
-        <entry key="..\:/Users/tu02_/OneDrive/Documents/GitHub/Library-Navigation-Andriod/app/src/main/res/layout/activity_main.xml" value="0.24818840579710144" />
-        <entry key="..\:/Users/tu02_/OneDrive/Documents/GitHub/Library-Navigation-Andriod/app/src/main/res/layout/activity_navigation_screen.xml" value="0.23596014492753623" />
-        <entry key="..\:/Users/tu02_/OneDrive/Documents/GitHub/Library-Navigation-Andriod/app/src/main/res/layout/fragment_first.xml" value="0.24818840579710144" />
       </map>
     </option>
   </component>

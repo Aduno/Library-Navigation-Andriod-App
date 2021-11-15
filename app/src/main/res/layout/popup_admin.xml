@@ -4,18 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:background="@drawable/popup_background">
 
     <EditText
         android:id="@+id/textView3"
         android:layout_width="325dp"
-        android:layout_height="271dp"
-        android:layout_marginTop="120dp"
-        android:background="@android:color/transparent"
+        android:layout_height="300dp"
+        android:layout_marginTop="40dp"
+        android:paddingHorizontal="10dp"
+        android:scrollbars="vertical"
+        android:paddingTop="10dp"
+        android:background="@drawable/text_outline"
+        android:fontFamily="@font/amethysta"
         android:gravity="top"
         android:hint="@string/prompt_announce"
         android:textColorHint="#808080"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,15 +41,19 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="364dp"
-        android:layout_height="90dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/amethysta"
+        android:gravity="center"
+        android:paddingHorizontal="10dp"
         android:text="Fill the section below"
+        android:textColor="@color/white"
         android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.422"
+        app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
-       android:gravity="center"/>
+        app:layout_constraintVertical_bias="0.056" />
 </androidx.constraintlayout.widget.ConstraintLayout>

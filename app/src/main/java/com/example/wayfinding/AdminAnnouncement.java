@@ -50,8 +50,5 @@ public class AdminAnnouncement extends AppCompatActivity {
     public void addAnnouncementClick(View v){
         //Create pop up
         startActivity(new Intent(AdminAnnouncement.this, Pop.class));
-        //Get information from the fields
-
-        //Call the connection helper to upload that information to the DB
     }
 }

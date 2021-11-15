@@ -16,8 +16,9 @@
     <style name="PersonalTheme.CustomTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
-    <style name="PersonalTheme">PersonalTheme</style>
-    <!--    https://www.youtube.com/watch?v=fn5OlqQuOCk-->
+<!--    <style name="PersonalTheme">PersonalTheme</style>-->
+<!--    &lt;!&ndash;    https://www.youtube.com/watch?v=fn5OlqQuOCk&ndash;&gt;-->
 </resources>
