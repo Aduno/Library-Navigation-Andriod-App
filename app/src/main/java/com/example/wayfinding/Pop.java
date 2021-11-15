@@ -36,7 +36,6 @@ public class Pop extends Activity{
         int height = dm.heightPixels;
 
         getWindow().setLayout((int)(width*.85),(int)(height*.80));
-
     }
 
     public void onclick(View view) {
@@ -58,7 +57,7 @@ public class Pop extends Activity{
                         textView.setText("Announcement published successfully.");
                     else
                         textView.setText("Announcement published unsuccessfully.");
-                        Toast.makeText(getApplicationContext(), "Announcement didn't publish", Toast.LENGTH_LONG).show();
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -81,5 +80,4 @@ public class Pop extends Activity{
 
         };
     }
-
 }
