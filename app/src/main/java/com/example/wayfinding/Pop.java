@@ -25,7 +25,7 @@ import java.util.Map;
 
 
 public class Pop extends Activity{
-    String URL = "192.168.1.12";
+    String URL = HomePageActivity.URL;
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +46,7 @@ public class Pop extends Activity{
         TextView textView = findViewById(R.id.textView4);
 
         Toast.makeText(this, "announcement", Toast.LENGTH_SHORT).show();
-        StringRequest req = new StringRequest(Request.Method.POST, URL+":8080/add_announcement.php", new Response.Listener<String>() {
+        StringRequest req = new StringRequest(Request.Method.POST, URL+"/add_announcement.php", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
