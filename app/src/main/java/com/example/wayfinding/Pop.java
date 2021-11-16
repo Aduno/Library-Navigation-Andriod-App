@@ -70,7 +70,7 @@ public class Pop extends Activity{
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("announcements", text_input1.getText().toString());
+                params.put("announcement", text_input1.getText().toString());
                 return params;
             }
         };
