@@ -29,10 +29,6 @@ class NavigationScreen : AppCompatActivity() {
         beaconManager.getBeaconParsers().add(
                 BeaconParser().setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24"))
 
-        // enabling debugging will send lots of verbose debug information from the library to Logcat
-        // this is useful for troubleshooting problmes
-//         BeaconManager.setDebug(true)
-
 
         // The code below will start "monitoring" for beacons matching the region definition below
         // the region definition is a wildcard that matches all beacons regardless of identifiers.
@@ -43,14 +39,6 @@ class NavigationScreen : AppCompatActivity() {
         beaconManager.startRangingBeacons(region)
         // These two lines set up a Live Data observer so this Activity can get beacon data from the Application class
         val regionViewModel = BeaconManager.getInstanceForApplication(this).getRegionViewModel(region)
-        // observer will be called each time the monitored regionState changes (inside vs. outside region)
-//        regionViewModel.regionState.observeForever(centralMonitoringObserver)
-        // observer will be called each time a new list of beacons is ranged (typically ~1 second in the foreground)
-//        regionViewModel.rangedBeacons.observeForever(centralRangingObserver)
-
-//        val viewModel = BeaconManager.getInstanceForApplication(this).getRegionViewModel(region)
-//        viewModel.rangedBeacons.observe(this, rangingObserver)
-
     }
 
     private val rangingObserver = Observer<Collection<Beacon>> { beacons ->
@@ -60,7 +48,6 @@ class NavigationScreen : AppCompatActivity() {
         }
 
     }
-    //        ViewModel viewModel = BeaconManager.getInstanceForApplication(this).getRegionViewModel(beaconApplication.region);
 
     val centralRangingObserver = Observer<Collection<Beacon>> { beacons ->
         Log.d(TAG, "Ranged: ${beacons.count()} beacons")

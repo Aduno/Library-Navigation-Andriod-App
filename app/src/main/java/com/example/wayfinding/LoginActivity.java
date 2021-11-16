@@ -20,6 +20,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText passwordInput;
     private LinearLayout loginFrame;
     private Button loginButton;
+    UserSettings settings;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        UserSettings settings = (UserSettings) intent.getSerializableExtra("key");
+        settings = (UserSettings) intent.getSerializableExtra("key");
 
         if(settings.getDarkMode()){
             //Set background of login background to gray or whatever color
@@ -51,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                 //Sends the user to the main page
                 //Also creates a admin object which is used to define the user
                 Intent intent = new Intent(LoginActivity.this, AdminAnnouncement.class);
+                intent.putExtra("key",settings);
                 startActivity(intent);
             }
             else{
