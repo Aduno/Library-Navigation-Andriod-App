@@ -1,7 +1,5 @@
 package com.example.wayfinding;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -12,13 +10,12 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.wayfinding.classes.ConnectionHelper;
 import com.example.wayfinding.classes.VolleyCallBack;
 
 import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.concurrent.TimeUnit;
 
 public class AdminAnnouncement extends AppCompatActivity{
     private ListView announcementList;
