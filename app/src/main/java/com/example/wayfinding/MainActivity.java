@@ -1,26 +1,19 @@
 package com.example.wayfinding;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import com.example.wayfinding.classes.UserSettings;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 
-import java.util.ArrayList;
+import com.example.wayfinding.classes.UserSettings;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 userSettings.setFrench(b);
+                settingsUpdate();
             }
         });
 
@@ -116,5 +110,33 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
+        }
+        public void settingsUpdate(){
+            TextView textView;
+            TextView textView1;
+            TextView textView2;
+            TextView textView3;
+            Button sign;
+            //Could have done this in one line
+            textView = findViewById(R.id.welcome_1);
+            textView2 = findViewById(R.id.welcome_3);
+            textView1 = findViewById(R.id.welcome_2);
+            textView3 = findViewById(R.id.welcome_4);
+            sign = findViewById(R.id.signin);
+
+            if(userSettings.getFrench()){
+                textView.setText(R.string.welcome_text_1_fr);
+                textView1.setText(R.string.welcome_text_2_fr);
+                textView2.setText(R.string.welcome_text_3_fr);
+                textView3.setText(R.string.welcome_text_4_fr);
+                sign.setText(R.string.sign_in_fr);
+            }
+            else{
+                textView.setText(R.string.welcome_text_1);
+                textView1.setText(R.string.welcome_text_2);
+                textView2.setText(R.string.welcome_text_3);
+                textView3.setText(R.string.welcome_text_4);
+                sign.setText(R.string.sign_in);
+            }
         }
     }

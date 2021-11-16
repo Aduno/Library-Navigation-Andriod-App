@@ -3,7 +3,6 @@ import  android.app.Activity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.Window;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,7 +14,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.wayfinding.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -43,7 +41,7 @@ public class Pop extends Activity{
     public void onclick(View view) {
         EditText text_input1 = findViewById(R.id.textView3);
 
-        TextView textView = findViewById(R.id.textView4);
+        TextView textView = findViewById(R.id.welcome_2);
 
         Toast.makeText(this, "announcement", Toast.LENGTH_SHORT).show();
         StringRequest req = new StringRequest(Request.Method.POST, URL+"/add_announcement.php", new Response.Listener<String>() {
