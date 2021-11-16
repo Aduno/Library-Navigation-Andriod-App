@@ -62,40 +62,4 @@ public class ConnectionHelper{
         });
         requestQueue.add(req);
     }
-//    public static ArrayList<String> getDatabaseInfo(Context context, String URL, int requestCode){
-//        ArrayList<String> items = new ArrayList<>();
-//        switch(requestCode){
-//            case 0:
-//                URL = URL+"/get_announcement.php";
-//                break;
-//            case 1:
-//                URL = URL+"/get_poi.php";
-//                break;
-//            default:
-//                throw new IllegalArgumentException("Invalid request code");
-//        }
-//        RequestQueue requestQueue = Volley.newRequestQueue(context);
-//        StringRequest req = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                    String[] split = response.split(",");
-//                    for (String e : split) {
-//                        items.add(e);
-//                    }
-//
-//            }
-//        },new Response.ErrorListener(){
-//            @Override
-//            public void onErrorResponse(VolleyError e){
-//                Toast.makeText(context,"Failed to connect to database", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-////        req.setRetryPolicy()
-//        requestQueue.add(req);
-//        try {
-//            TimeUnit.MILLISECONDS.sleep(300);
-//        }catch(Exception e){
-//        }
-//        return items;
-//    }
 }
