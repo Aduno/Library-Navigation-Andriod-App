@@ -1,24 +1,13 @@
 package com.example.wayfinding;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.os.Build;
 import android.os.Bundle;
-import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -26,20 +15,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.wayfinding.classes.ConnectionHelper;
 import com.example.wayfinding.classes.UserSettings;
+import com.example.wayfinding.classes.VolleyCallBack;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
-
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -60,7 +45,7 @@ public class HomePageActivity extends AppCompatActivity {
     private Button speechButton;
     private ArrayList<String> locationList;
     //This URL has to be changed depending on the PC unless an external server with a static ip is setup
-    public static final String URL = "http://192.168.1.18:8080";
+    public static final String URL = "http://192.168.1.12:8080";
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -86,7 +71,6 @@ public class HomePageActivity extends AppCompatActivity {
             homeFrame.setBackgroundColor(Color.WHITE);
         }
 
-
         // ------------------------- Initializes speech recognizer -------------------------//
         // Based on tutorial from https://www.geeksforgeeks.org/how-to-convert-speech-to-text-in-android/
         SpeechRecognizer recognizer;
@@ -105,41 +89,51 @@ public class HomePageActivity extends AppCompatActivity {
         });
 
         //---------------------------------- Search bar ----------------------------------//
-
         //Retrieves POI information from the database
-        locationList = ConnectionHelper.getDatabaseInfo(getApplicationContext(),URL,REQUEST_CODE_POI);
-        locationList.add("Printers");
-        locationList.add("Elevators");
-        //Populates the search bar with information
-        searchBar.setAdapter(new ArrayAdapter<>(HomePageActivity.this,android.R.layout.simple_spinner_dropdown_item, locationList));
-        searchBar.setTitle(getString(R.string.search_spinner_title));
-        searchBar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        locationList = new ArrayList<>();
+        ConnectionHelper.getDatabaseInfo(getApplicationContext(), URL, REQUEST_CODE_POI, locationList, new VolleyCallBack() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String location = parent.getItemAtPosition(position).toString();
+            public void onSuccess() {
+                searchBar.setAdapter(new ArrayAdapter<>(HomePageActivity.this,android.R.layout.simple_spinner_dropdown_item, locationList));
+                searchBar.setTitle(getString(R.string.search_spinner_title));
+                searchBar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        String location = parent.getItemAtPosition(position).toString();
 
-                //pass location info to algorithm interface
+                        //pass location info to algorithm interface
 
-                openNavigation(location);
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+                        openNavigation(location);
+                    }
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                    }
+                });
             }
         });
+        //Populates the search bar with information
+
 
         //------------------------------- Announcements ------------------------------//
         //Retrieves announcement info from the database
-        items = ConnectionHelper.getDatabaseInfo(getApplicationContext(),URL,REQUEST_CODE_ANNOUNCEMENT);
-        //Populates the announcement list with the announcements
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items){
+        items = new ArrayList<>();
+        ConnectionHelper.getDatabaseInfo(getApplicationContext(), URL, REQUEST_CODE_ANNOUNCEMENT, items, new VolleyCallBack() {
             @Override
-            public View getView(int position, View convertView, ViewGroup parent){
-                TextView item = (TextView) super.getView(position,convertView,parent);
-                item.setTypeface(Typeface.createFromAsset(getAssets(),"amethysta.ttf"));
-                return item;
+            public void onSuccess() {
+                //Populates the announcement list with the announcements
+                adapter = new ArrayAdapter<String>(HomePageActivity.this, android.R.layout.simple_list_item_1, items){
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent){
+                        TextView item = (TextView) super.getView(position,convertView,parent);
+                        item.setTypeface(Typeface.createFromAsset(getAssets(),"amethysta.ttf"));
+                        return item;
+                    }
+                };
+                announcementList.setAdapter(adapter);
             }
-        };
-        announcementList.setAdapter(adapter);
+        });
+
+
     }
 
     /**

@@ -12,11 +12,19 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.example.wayfinding.classes.ConnectionHelper;
+import com.example.wayfinding.classes.VolleyCallBack;
 
-public class AdminAnnouncement extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.concurrent.TimeUnit;
+
+public class AdminAnnouncement extends AppCompatActivity{
     private ListView announcementList;
     private Button addAnnouncementButton;
+    ArrayList<String> items;
+    ArrayAdapter<String> adp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,25 +33,27 @@ public class AdminAnnouncement extends AppCompatActivity {
         announcementList = findViewById(R.id.announcement);
         addAnnouncementButton = findViewById(R.id.add_announcement_button);
 
-
-        ArrayList<String> items = new ArrayList<>();
-
-
-
-        ArrayAdapter<String> adp = new ArrayAdapter<String>(AdminAnnouncement.this,android.R.layout.simple_list_item_1, items) {
+        items = new ArrayList<>();
+        ConnectionHelper.getDatabaseInfo(this, HomePageActivity.URL, 0, items, new VolleyCallBack() {
             @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                TextView item = (TextView) super.getView(position, convertView, parent);
-                item.setTypeface(Typeface.createFromAsset(getAssets(), "amethysta.ttf"));
-                return item;
+            public void onSuccess() {
+                adp = new ArrayAdapter<String>(AdminAnnouncement.this,android.R.layout.simple_list_item_1, items) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        TextView item = (TextView) super.getView(position, convertView, parent);
+                        item.setTypeface(Typeface.createFromAsset(getAssets(), "amethysta.ttf"));
+                        return item;
+                    }
+                };
+                announcementList.setAdapter(adp);
             }
-        };
-        announcementList.setAdapter(adp);
+        });
+
 
     }
 
     public void goToHome(View v){
-        Intent intent = new Intent(AdminAnnouncement.this, HomePageActivity.class);
+        Intent intent = new Intent(AdminAnnouncement.this, MainActivity.class);
         startActivity(intent);
     }
 
@@ -51,4 +61,5 @@ public class AdminAnnouncement extends AppCompatActivity {
         //Create pop up
         startActivity(new Intent(AdminAnnouncement.this, Pop.class));
     }
+
 }
