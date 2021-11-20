@@ -1,6 +1,7 @@
 package com.example.wayfinding;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -111,8 +113,6 @@ public class HomePageActivity extends AppCompatActivity {
                 });
             }
         });
-        //Populates the search bar with information
-
 
         //------------------------------- Announcements ------------------------------//
         //Retrieves announcement info from the database
@@ -132,21 +132,26 @@ public class HomePageActivity extends AppCompatActivity {
                 announcementList.setAdapter(adapter);
             }
         });
-
-
     }
 
-    /**
-     * Starts the intent for navigation and displays a message for the user
-     * @param location desired location of the user
-     */
-    protected void openNavigation(String location){
-        String msg = "Finding the best route to "+location+"...";
-        Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this,NavigationScreen.class);
-        startActivity(intent);
-        finish(); //Added to stop a bug where the navigation wont reopen after backing once and trying to get back to navigation
+    float x1,y1,x2,y2;
+    public boolean onTouchEvent(MotionEvent motionEvent){
+        switch(motionEvent.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                x1 = motionEvent.getX();
+                y1 = motionEvent.getY();
+                break;
+            case MotionEvent.ACTION_UP:
+                x2 = motionEvent.getX();
+                y2 = motionEvent.getY();
+                if(x1+175<x2){
+                    finish();
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                }
+        }
+        return false;
     }
+
     /**
      * Speech to text functionality for the search bar
      */
@@ -178,5 +183,16 @@ public class HomePageActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+    /**
+     * Starts the intent for navigation and displays a message for the user
+     * @param location desired location of the user
+     */
+    protected void openNavigation(String location){
+        String msg = "Finding the best route to "+location+"...";
+        Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this,NavigationScreen.class);
+        startActivity(intent);
+        finish(); //Added to stop a bug where the navigation wont reopen after backing once and trying to get back to navigation
     }
 }

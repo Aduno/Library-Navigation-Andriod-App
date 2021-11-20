@@ -3,6 +3,7 @@ package com.example.wayfinding;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
 import com.example.wayfinding.classes.UserSettings;
+import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                     soundButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_baseline_volume_off_24, null));
                     //Play sound enabled audio cue
                     userSettings.setAudioMode(true);
+
                 } else {
                     soundButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_baseline_volume_up_24, null));
                     //Play sound disable audio cue
@@ -87,7 +90,31 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
+    /**
+     * Function for swipe to next activity
+     * Tutorial from https://www.youtube.com/watch?v=Gsuz2j11qgc
+     * @param motionEvent
+     * @return
+     */
+    float x1,y1,x2,y2;
+    public boolean onTouchEvent(MotionEvent motionEvent){
+        switch(motionEvent.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                x1 = motionEvent.getX();
+                y1 = motionEvent.getY();
+                break;
+            case MotionEvent.ACTION_UP:
+                x2 = motionEvent.getX();
+                y2 = motionEvent.getY();
+                if(x1>x2+175){
+                    Intent intent = new Intent(MainActivity.this,HomePageActivity.class);
+                    intent.putExtra("key",userSettings);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                }
+        }
+        return false;
+    }
         //Sends the user to navigation/home page
         public void goToHome (View v){
             Intent intent = new Intent(MainActivity.this, HomePageActivity.class);
