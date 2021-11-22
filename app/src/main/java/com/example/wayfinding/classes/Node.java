@@ -65,5 +65,8 @@ public class Node implements Comparable<Node>{
         hash = 31 * hash + Arrays.hashCode(position);
         return hash;
     }
+    public int[] getPosition(){
+        return  position;
+    }
 }
 

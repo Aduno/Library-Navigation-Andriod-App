@@ -8,5 +8,5 @@
         android:id="@+id/firstFragment"
         android:name="fragments.FirstFragment"
         android:label="fragment_first"
-        tools:layout="@layout/fragment_first" />
+        tools:layout="@layout/activity_map" />
 </navigation>

@@ -1,6 +1,8 @@
 package com.example.wayfinding
 
 import android.Manifest
+
+
 import android.app.AlertDialog
 import android.content.pm.PackageManager
 import android.os.Build
@@ -8,8 +10,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.Observer
+
 import com.example.wayfinding.R
 import org.altbeacon.beacon.*
+
 
 // Code from the library reference for android beacon byu David Young
 // https://github.com/davidgyoung/android-beacon-library-reference-kotlin
