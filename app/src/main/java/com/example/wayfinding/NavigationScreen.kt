@@ -57,6 +57,20 @@ class NavigationScreen : AppCompatActivity() {
         }
         map.setObstacles(obstacles)
         map.setCheckPoints(checkPoints)
+
+        var pointUUID : String? = null
+        var desination = intent.getStringExtra("destination")
+        checkPoints.forEach {
+            (key, value) ->
+            if(value.name.equals(desination)){
+                pointUUID = value.uuid
+            }
+        }
+        //        for((key,value) in checkPoints){
+        //            if(value.getName().equals(desination))
+        //        }
+        var path = map.findPath(currentRegion!!.uuid,pointUUID)
+
         val beaconManager = BeaconManager.getInstanceForApplication(this)
 
         beaconManager.getBeaconParsers().add(BeaconParser().
@@ -71,7 +85,7 @@ class NavigationScreen : AppCompatActivity() {
         // the region definition is a wildcard that matches all beacons regardless of identifiers.
         // if you only want to detect beacons with a specific UUID, change the id1 paremeter to
         // a UUID like Identifier.parse("2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6")
-        val region = Region("all-beacons-regions", null, null, null)
+        val region = Region("all-beacons-regions", Identifier.parse("c336aa38054bb0483b0ae7527051970"), null, null)
         beaconManager.getRegionViewModel(region).rangedBeacons.observe(this,rangingObserver)
         beaconManager.startRangingBeacons(region)
         // These two lines set up a Live Data observer so this Activity can get beacon data from the Application class
@@ -88,6 +102,7 @@ class NavigationScreen : AppCompatActivity() {
                 if(currentRegion!=checkPoints.getValue(beacon.id1.toString())&&currentClosest>distance){
                     currentRegion = checkPoints.getValue(beacon.id1.toString())
                     currentClosest = distance
+                    //Update canvas with the new location
                 }
             }
         }
