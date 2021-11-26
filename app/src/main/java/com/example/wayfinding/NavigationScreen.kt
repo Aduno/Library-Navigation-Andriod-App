@@ -16,6 +16,7 @@ import androidx.lifecycle.Observer
 import com.example.wayfinding.classes.Region
 import com.example.wayfinding.classes.CheckPoint
 import com.example.wayfinding.classes.Map
+import com.example.wayfinding.classes.Node
 import org.altbeacon.beacon.*
 import java.util.*
 import kotlin.collections.HashMap
@@ -30,6 +31,7 @@ class NavigationScreen : AppCompatActivity() {
     var obstacles = Hashtable<Int, IntArray>()
     var checkPointDef = HashMap<String,String>()
     var currentRegion : CheckPoint? = null
+    lateinit var path : Stack<Node>
 //    lateinit var frame : RelativeLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,7 +71,7 @@ class NavigationScreen : AppCompatActivity() {
         //        for((key,value) in checkPoints){
         //            if(value.getName().equals(desination))
         //        }
-        var path = map.findPath(currentRegion!!.uuid,pointUUID)
+        path = map.findPath(currentRegion!!.uuid,pointUUID)
 
         val beaconManager = BeaconManager.getInstanceForApplication(this)
 
