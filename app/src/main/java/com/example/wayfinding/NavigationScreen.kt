@@ -9,21 +9,54 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.FrameLayout
+import android.widget.RelativeLayout
 import androidx.lifecycle.Observer
 
-import com.example.wayfinding.R
+import com.example.wayfinding.classes.Region
+import com.example.wayfinding.classes.CheckPoint
+import com.example.wayfinding.classes.Map
 import org.altbeacon.beacon.*
+import java.util.*
+import kotlin.collections.HashMap
 
 
 // Code from the library reference for android beacon byu David Young
 // https://github.com/davidgyoung/android-beacon-library-reference-kotlin
 class NavigationScreen : AppCompatActivity() {
 //    lateinit var region: Region
+    var map = Map()
+    var checkPoints = Hashtable<String,CheckPoint>()
+    var obstacles = Hashtable<Int, IntArray>()
+    var checkPointDef = HashMap<String,String>()
+    var currentRegion : CheckPoint? = null
+//    lateinit var frame : RelativeLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_navigation_screen)
         checkPermissions()
+
+
+        checkPointDef["Elevator"] = "c336aa38054bb0483b0ae7527051970"
+        checkPointDef["Service Desk"] = "c336aa38054bb0483b0ae7527051971"
+        checkPointDef["Entrance"] = "c336aa38054bb0483b0ae7527051972"
+
+        checkPoints["c336aa38054bb0483b0ae7527051970"] = CheckPoint("Elevator","c336aa38054bb0483b0ae7527051970",intArrayOf(20,23))
+        checkPoints["c336aa38054bb0483b0ae7527051971"] = CheckPoint("Service Desk","c336aa38054bb0483b0ae7527051971", intArrayOf(14,27))
+        var defaultPoint = CheckPoint("Entrance","c336aa38054bb0483b0ae7527051972", intArrayOf(20,28))
+        checkPoints["c336aa38054bb0483b0ae7527051972"] = defaultPoint
+        currentRegion = defaultPoint
+
+        var obs = parseString("(20,24):(21,24):(22,24):(23,24):(16,25):(20,25):(21,25):(22,25):(23,25):(16,26):(16,29):(17,29):(18,29):(19,29)")
+        for (s in obs){
+            val split = s.split(",")
+            val x =split.get(0).substring(1)
+            val y =split.get(1).substring(0,split.get(1).length-1)
+            putObstacles(Integer.parseInt(x),Integer.parseInt(y),obstacles)
+        }
+        map.setObstacles(obstacles)
+        map.setCheckPoints(checkPoints)
         val beaconManager = BeaconManager.getInstanceForApplication(this)
 
         beaconManager.getBeaconParsers().add(BeaconParser().
@@ -47,18 +80,25 @@ class NavigationScreen : AppCompatActivity() {
 
     private val rangingObserver = Observer<Collection<Beacon>> { beacons ->
         Log.d("output", "Detected " + beacons.count())
+        var currentClosest = Double.MAX_VALUE
         for (beacon: Beacon in beacons) {
-            Log.d("output", "ID: ${beacon.id1} rssi: ${beacon.rssi} distance(m): ${beacon.distance}m".trimIndent())
+            val distance = beacon.distance
+            Log.d("output", "ID: ${beacon.id1} rssi: ${beacon.rssi} distance(m): ${distance}m".trimIndent())
+            if(checkPoints.contains(beacon.id1.toString())&&distance<2.5){
+                if(currentRegion!=checkPoints.getValue(beacon.id1.toString())&&currentClosest>distance){
+                    currentRegion = checkPoints.getValue(beacon.id1.toString())
+                    currentClosest = distance
+                }
+            }
         }
-
     }
 
-    val centralRangingObserver = Observer<Collection<Beacon>> { beacons ->
-        Log.d(TAG, "Ranged: ${beacons.count()} beacons")
-        for (beacon: Beacon in beacons) {
-            Log.d(TAG, "$beacon about ${beacon.distance} meters away")
-        }
-    }
+//    val centralRangingObserver = Observer<Collection<Beacon>> { beacons ->
+//        Log.d(TAG, "Ranged: ${beacons.count()} beacons")
+//        for (beacon: Beacon in beacons) {
+//            Log.d(TAG, "$beacon about ${beacon.distance} meters away")
+//        }
+//    }
     override fun onPause() {
         Log.d(TAG, "onPause")
         super.onPause()
@@ -79,7 +119,16 @@ class NavigationScreen : AppCompatActivity() {
         }
     }
 
-
+    fun hash(x: Int, y: Int): Int {
+        return x * 40 + y
+    }
+    fun putObstacles(x: Int, y: Int,table: Hashtable<Int,IntArray>){
+        table[hash(x,y)] = intArrayOf(x,y)
+    }
+    fun parseString(s: String): List<String>{
+        var string = s.split(":")
+        return string
+    }
     fun checkPermissions() {
         // basepermissions are for M and higher
         var permissions = arrayOf( Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION)
