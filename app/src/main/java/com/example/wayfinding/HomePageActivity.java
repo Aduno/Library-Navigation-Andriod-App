@@ -113,7 +113,26 @@ public class HomePageActivity extends AppCompatActivity {
                 });
             }
         });
+        locationList.add("Elevator");
+        locationList.add("Entrance");
+        locationList.add("Service Desk");
+        searchBar.setAdapter(new ArrayAdapter<>(HomePageActivity.this,android.R.layout.simple_spinner_dropdown_item, locationList));
+        searchBar.setTitle(getString(R.string.search_spinner_title));
+        searchBar.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        String location = parent.getItemAtPosition(position).toString();
 
+                        //pass location info to algorithm interface
+
+                        openNavigation(location);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                    }
+                });
         //------------------------------- Announcements ------------------------------//
         //Retrieves announcement info from the database
         items = new ArrayList<>();
@@ -192,6 +211,7 @@ public class HomePageActivity extends AppCompatActivity {
         String msg = "Finding the best route to "+location+"...";
         Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this,NavigationScreen.class);
+        intent.putExtra("destination",location);
         startActivity(intent);
         finish(); //Added to stop a bug where the navigation wont reopen after backing once and trying to get back to navigation
     }
