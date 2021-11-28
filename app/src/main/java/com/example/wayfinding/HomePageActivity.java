@@ -112,7 +112,7 @@ public class HomePageActivity extends AppCompatActivity {
                     }
                 });
             }
-        });
+        },settings);
         locationList.add("Elevator");
         locationList.add("Entrance");
         locationList.add("Service Desk");
@@ -150,7 +150,7 @@ public class HomePageActivity extends AppCompatActivity {
                 };
                 announcementList.setAdapter(adapter);
             }
-        });
+        },settings);
     }
 
     float x1,y1,x2,y2;

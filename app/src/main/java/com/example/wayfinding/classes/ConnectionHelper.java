@@ -53,7 +53,6 @@ public class ConnectionHelper{
         requestQueue.add(req);
         if(settings.getFrench()){
 
-
         }else {
             items.add("Please keep your mask on inside the building and complete the daily health checkin when " +
                     "coming on campus.");
@@ -61,5 +60,4 @@ public class ConnectionHelper{
             items.add("The elevators will go under maintenance on Dec 10");
         }
     }
-
 }

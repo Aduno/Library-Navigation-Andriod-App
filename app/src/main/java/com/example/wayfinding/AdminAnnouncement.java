@@ -67,7 +67,7 @@ public class AdminAnnouncement extends AppCompatActivity {
                 };
                 announcementList.setAdapter(adp);
             }
-        });
+        },settings);
 
         announcementList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
