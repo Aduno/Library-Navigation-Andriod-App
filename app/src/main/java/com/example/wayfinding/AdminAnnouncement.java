@@ -6,17 +6,26 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.example.wayfinding.classes.ConnectionHelper;
 import com.example.wayfinding.classes.UserSettings;
 import com.example.wayfinding.classes.VolleyCallBack;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -38,13 +47,6 @@ public class AdminAnnouncement extends AppCompatActivity {
         LinearLayout frame = findViewById(R.id.adminFrame);
         settings = (UserSettings) intent.getSerializableExtra("key");
 
-        announcementList.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                int position = announcementList.getSelectedItemPosition();
-
-            }
-        });
         if (settings.getDarkMode()) {
             frame.setBackgroundColor((Color.rgb(100, 100, 100)));
         } else {
@@ -67,7 +69,15 @@ public class AdminAnnouncement extends AppCompatActivity {
             }
         });
 
-
+        announcementList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                items.remove(items.get(i));
+                announcementList.setAdapter(new ArrayAdapter<String>(AdminAnnouncement.this, android.R.layout.simple_list_item_1, items));
+                deleteItem(items.get(i));
+                return false;
+            }
+        });
     }
 
     public void goToHome(View v) {
@@ -78,5 +88,26 @@ public class AdminAnnouncement extends AppCompatActivity {
     public void addAnnouncementClick(View v) {
         //Create pop up
         startActivity(new Intent(AdminAnnouncement.this, Pop.class));
+    }
+    public void deleteItem(String announcment){
+        StringRequest req = new StringRequest(Request.Method.POST, HomePageActivity.URL+"/delete_announcement.php", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String success = jsonObject.getString("success");
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "error" + error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
