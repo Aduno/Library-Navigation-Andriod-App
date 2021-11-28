@@ -2,6 +2,7 @@ package com.example.wayfinding;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,9 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout main;
     protected UserSettings userSettings;
     private SwitchCompat languageToggle;
-
-
-
+    MediaPlayer player;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,11 +69,18 @@ public class MainActivity extends AppCompatActivity {
                     soundButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_baseline_volume_off_24, null));
                     //Play sound enabled audio cue
                     userSettings.setAudioMode(true);
+                    if(userSettings.getFrench()){
+                        play2(soundButton);
 
+                    }
+                   else{
+                       play(soundButton);
+                    }
                 } else {
                     soundButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_baseline_volume_up_24, null));
                     //Play sound disable audio cue
                     userSettings.setAudioMode(false);
+                    stopPlayer();
                 }
             }
         });
@@ -97,6 +104,37 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void play(View buttonView ){
+        if (player==null){
+            player= MediaPlayer.create(MainActivity.this, R.raw.english_soundb);
+            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    stopPlayer();
+                }
+            });
+        }
+        player.start();
+    }
+    public void play2(View buttonView ){
+        if (player==null){
+            player= MediaPlayer.create(MainActivity.this, R.raw.french_soundb);
+            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    stopPlayer();
+                }
+            });
+        }
+        player.start();
+    }
+    private void stopPlayer(){
+        if(player!=null){
+            player.release();
+            player=null;
+            Toast.makeText(this, "Mediaplayer released",Toast.LENGTH_LONG).show();
+        }
+    }
     /**
      * Function for swipe to next activity
      * Tutorial from https://www.youtube.com/watch?v=Gsuz2j11qgc

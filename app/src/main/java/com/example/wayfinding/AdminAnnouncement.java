@@ -20,12 +20,13 @@ import com.example.wayfinding.classes.VolleyCallBack;
 
 import java.util.ArrayList;
 
-public class AdminAnnouncement extends AppCompatActivity{
+public class AdminAnnouncement extends AppCompatActivity {
     private ListView announcementList;
     private Button addAnnouncementButton;
     ArrayList<String> items;
     ArrayAdapter<String> adp;
     UserSettings settings;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,17 +38,24 @@ public class AdminAnnouncement extends AppCompatActivity{
         LinearLayout frame = findViewById(R.id.adminFrame);
         settings = (UserSettings) intent.getSerializableExtra("key");
 
-        if(settings.getDarkMode()){
+        announcementList.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                int position = announcementList.getSelectedItemPosition();
+
+            }
+        });
+        if (settings.getDarkMode()) {
             frame.setBackgroundColor((Color.rgb(100, 100, 100)));
-        }else{
-            frame.setBackgroundColor(Color.rgb(255,255,255));
+        } else {
+            frame.setBackgroundColor(Color.rgb(255, 255, 255));
         }
 
         items = new ArrayList<>();
         ConnectionHelper.getDatabaseInfo(this, HomePageActivity.URL, 0, items, new VolleyCallBack() {
             @Override
             public void onSuccess() {
-                adp = new ArrayAdapter<String>(AdminAnnouncement.this,android.R.layout.simple_list_item_1, items) {
+                adp = new ArrayAdapter<String>(AdminAnnouncement.this, android.R.layout.simple_list_item_1, items) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         TextView item = (TextView) super.getView(position, convertView, parent);
@@ -62,14 +70,13 @@ public class AdminAnnouncement extends AppCompatActivity{
 
     }
 
-    public void goToHome(View v){
+    public void goToHome(View v) {
         Intent intent = new Intent(AdminAnnouncement.this, MainActivity.class);
         startActivity(intent);
     }
 
-    public void addAnnouncementClick(View v){
+    public void addAnnouncementClick(View v) {
         //Create pop up
         startActivity(new Intent(AdminAnnouncement.this, Pop.class));
     }
-
 }
