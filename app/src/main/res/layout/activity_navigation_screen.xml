@@ -24,7 +24,9 @@
             android:id="@+id/canvasFrame"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.77" />
+            android:layout_weight="0.77"
+            android:background="@drawable/library_map__1_"
+            />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"

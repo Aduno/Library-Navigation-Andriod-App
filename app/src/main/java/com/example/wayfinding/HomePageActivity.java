@@ -137,7 +137,9 @@ public class HomePageActivity extends AppCompatActivity {
         //Retrieves announcement info from the database
         items = new ArrayList<>();
         if(settings.getFrench()){
-
+            items.add("Veuillez mettre vos masques en tout temps dans les espaces intérieurs N’oubliez pas de procéder à votre enregistrement de santé quotidien avant de venir au campus.");
+            items.add("La bibliothèque sera fermée plus tôt le 24 décembre, les heures d’Operations seront de 10 :00 à 16 :00");
+            items.add("Les ascenseurs seront en maintenance le 10 décembre");
         }else {
             items.add("Please keep your mask on inside the building and complete the daily health checkin when " +
                     "coming on campus.");
