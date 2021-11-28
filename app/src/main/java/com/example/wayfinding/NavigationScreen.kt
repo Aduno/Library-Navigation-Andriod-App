@@ -72,7 +72,6 @@ class NavigationScreen : AppCompatActivity() {
         //            if(value.getName().equals(desination))
         //        }
         path = map.findPath(currentRegion!!.uuid,pointUUID)
-
         val beaconManager = BeaconManager.getInstanceForApplication(this)
 
         beaconManager.getBeaconParsers().add(BeaconParser().
