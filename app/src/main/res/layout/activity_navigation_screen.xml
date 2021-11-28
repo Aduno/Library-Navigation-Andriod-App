@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navFrame"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    tools:context=".NavigationScreen">
-
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/navScreen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FFFFFF"
         android:orientation="vertical"
+        tools:context=".NavigationScreen"
         android:weightSum="1">
 
         <ImageView
@@ -24,15 +20,11 @@
             android:src="@drawable/uottawaheader"
             tools:layout_editor_absoluteX="0dp" />
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView"
-            android:name="androidx.navigation.fragment.NavHostFragment"
+        <RelativeLayout
+            android:id="@+id/canvasFrame"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.77"
-            android:background="#FFFFFF"
-            app:defaultNavHost="true"
-            app:navGraph="@navigation/my_nav" />
+            android:layout_weight="0.77" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
@@ -48,6 +40,5 @@
 
         </com.google.android.material.bottomnavigation.BottomNavigationView>
 
-    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>

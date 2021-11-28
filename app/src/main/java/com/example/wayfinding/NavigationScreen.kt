@@ -1,21 +1,21 @@
 package com.example.wayfinding
 
+
 import android.Manifest
-
-
 import android.app.AlertDialog
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.FrameLayout
+import android.view.LayoutInflater
+import android.view.View
 import android.widget.RelativeLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-
-import com.example.wayfinding.classes.Region
 import com.example.wayfinding.classes.CheckPoint
 import com.example.wayfinding.classes.Map
+import com.example.wayfinding.classes.Node
 import org.altbeacon.beacon.*
 import java.util.*
 import kotlin.collections.HashMap
@@ -30,7 +30,9 @@ class NavigationScreen : AppCompatActivity() {
     var obstacles = Hashtable<Int, IntArray>()
     var checkPointDef = HashMap<String,String>()
     var currentRegion : CheckPoint? = null
-//    lateinit var frame : RelativeLayout
+    lateinit var path : Stack<Node>
+    lateinit var frame : RelativeLayout
+    var pointUUID : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +60,6 @@ class NavigationScreen : AppCompatActivity() {
         map.setObstacles(obstacles)
         map.setCheckPoints(checkPoints)
 
-        var pointUUID : String? = null
         var desination = intent.getStringExtra("destination")
         checkPoints.forEach {
             (key, value) ->
@@ -69,7 +70,7 @@ class NavigationScreen : AppCompatActivity() {
         //        for((key,value) in checkPoints){
         //            if(value.getName().equals(desination))
         //        }
-        var path = map.findPath(currentRegion!!.uuid,pointUUID)
+        path = map.findPath(currentRegion!!.uuid,pointUUID)
 
         val beaconManager = BeaconManager.getInstanceForApplication(this)
 
@@ -102,18 +103,15 @@ class NavigationScreen : AppCompatActivity() {
                 if(currentRegion!=checkPoints.getValue(beacon.id1.toString())&&currentClosest>distance){
                     currentRegion = checkPoints.getValue(beacon.id1.toString())
                     currentClosest = distance
-                    //Update canvas with the new location
+                    path = map.findPath(currentRegion!!.uuid,pointUUID)
+                    var canvas = GrowingLine(this,null,path)
+                    frame = findViewById<RelativeLayout>(R.id.canvasFrame)
+                    frame.addView(canvas)
                 }
             }
         }
     }
 
-//    val centralRangingObserver = Observer<Collection<Beacon>> { beacons ->
-//        Log.d(TAG, "Ranged: ${beacons.count()} beacons")
-//        for (beacon: Beacon in beacons) {
-//            Log.d(TAG, "$beacon about ${beacon.distance} meters away")
-//        }
-//    }
     override fun onPause() {
         Log.d(TAG, "onPause")
         super.onPause()

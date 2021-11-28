@@ -21,11 +21,11 @@ public class GrowingLine extends View {
 
     private int x1,y1,x2,y2;
     private List<PointF> listOfPoints;
-    private int inte = 0;
+    private int integer = 0;
     private Paint paint;
     Stack<Node> path;
 
-    public GrowingLine (Context context, AttributeSet attrs) {
+    public GrowingLine (Context context, AttributeSet attrs, Stack<Node>points) {
         super(context, attrs);
 
         Map map = new Map();
@@ -79,12 +79,15 @@ public class GrowingLine extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-        for(int i=0;i<path.size()/2-1;i++){
-            Node node1 = path.pop();
-            Node node2 = path.pop();
-            canvas.drawLine(node1.getPosition()[0],node1.getPosition()[1],
-                    node2.getPosition()[0],node2.getPosition()[1],paint);
+        ArrayList<int[]> coordinates = new ArrayList<>();
+        for(Node node : path){
+            coordinates.add(node.getPosition());
+        }
+        int[] firstPoint = coordinates.get(0);
+        for(int i=1;i<path.size();i++){
+            int[] secondPoint = coordinates.get(i);
+            canvas.drawLine(firstPoint[0],firstPoint[1],secondPoint[0],secondPoint[1], paint);
+            firstPoint = secondPoint;
         }
     }
 
