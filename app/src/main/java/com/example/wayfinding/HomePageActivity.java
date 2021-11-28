@@ -221,7 +221,8 @@ public class HomePageActivity extends AppCompatActivity {
         String msg = "Finding the best route to "+location+"...";
         Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this,NavigationScreen.class);
-        intent.putExtra("destination",location);
+        String format = location.substring(0,1).toUpperCase()+location.substring(1);
+        intent.putExtra("destination",format);
         startActivity(intent);
         finish(); //Added to stop a bug where the navigation wont reopen after backing once and trying to get back to navigation
     }

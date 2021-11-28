@@ -27,7 +27,7 @@ public class GrowingLine extends View {
 
     public GrowingLine (Context context, AttributeSet attrs, Stack<Node>points) {
         super(context, attrs);
-
+        this.setBackground(getResources().getDrawable(R.drawable.library_map__1_, null));
         Map map = new Map();
 
         Hashtable<String, CheckPoint> checkpoints = new Hashtable<>();

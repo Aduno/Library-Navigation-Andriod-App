@@ -91,6 +91,9 @@ class NavigationScreen : AppCompatActivity() {
         beaconManager.startRangingBeacons(region)
         // These two lines set up a Live Data observer so this Activity can get beacon data from the Application class
         val regionViewModel = BeaconManager.getInstanceForApplication(this).getRegionViewModel(region)
+        var canvas = GrowingLine(this,null,path)
+        frame = findViewById<RelativeLayout>(R.id.canvasFrame)
+        frame.addView(canvas)
     }
 
     private val rangingObserver = Observer<Collection<Beacon>> { beacons ->
