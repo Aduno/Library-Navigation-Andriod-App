@@ -21,6 +21,8 @@ import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
 public class MainActivity extends AppCompatActivity {
 
+
+
     private ToggleButton lightButton;
     private ToggleButton soundButton;
     private LinearLayout main;
@@ -40,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         lightButton = findViewById(R.id.toggleLight);
         soundButton = findViewById(R.id.soundIcon);
         languageToggle = findViewById(R.id.languageSwitch);
+
+
 
         languageToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -97,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     public void play(View buttonView ){

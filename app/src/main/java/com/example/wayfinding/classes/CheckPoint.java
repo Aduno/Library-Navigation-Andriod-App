@@ -13,7 +13,7 @@ public class CheckPoint implements Comparable<CheckPoint>{
         this.UUID = UUID;
         this.name = name;
     }
-    public CheckPoint(String UUID, String name,int[] position) {
+    public CheckPoint(String name,String UUID, int[] position) {
         this.UUID = UUID;
         this.name = name;
         this.position = position;
