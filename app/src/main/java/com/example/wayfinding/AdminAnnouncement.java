@@ -54,6 +54,14 @@ public class AdminAnnouncement extends AppCompatActivity {
         }
 
         items = new ArrayList<>();
+        if(settings.getFrench()){
+
+        }else {
+            items.add("Please keep your mask on inside the building and complete the daily health checkin when " +
+                    "coming on campus.");
+            items.add("The library will be closed early for December 24. Operating hours will be 10:00AM to 4:00PM");
+            items.add("The elevators will go under maintenance on Dec 10");
+        }
         ConnectionHelper.getDatabaseInfo(this, HomePageActivity.URL, 0, items, new VolleyCallBack() {
             @Override
             public void onSuccess() {
