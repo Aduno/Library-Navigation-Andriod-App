@@ -43,7 +43,7 @@ public class Pop extends Activity{
 
         TextView textView = findViewById(R.id.welcome_2);
 
-        Toast.makeText(this, "announcement", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Announcement published successfully.", Toast.LENGTH_LONG).show();
         StringRequest req = new StringRequest(Request.Method.POST, URL+"/add_announcement.php", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

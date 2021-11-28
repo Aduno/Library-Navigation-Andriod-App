@@ -47,7 +47,7 @@ public class HomePageActivity extends AppCompatActivity {
     private Button speechButton;
     private ArrayList<String> locationList;
     //This URL has to be changed depending on the PC unless an external server with a static ip is setup
-    public static final String URL = "http://192.168.1.12:8080";
+    public static final String URL = "http://10.196.62.226:8080";
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
