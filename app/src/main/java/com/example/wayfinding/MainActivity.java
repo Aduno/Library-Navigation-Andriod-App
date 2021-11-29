@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         if(player!=null){
             player.release();
             player=null;
-            Toast.makeText(this, "Mediaplayer released",Toast.LENGTH_LONG).show();
+//            Toast.makeText(this, "Mediaplayer released",Toast.LENGTH_LONG).show();
         }
     }
     /**

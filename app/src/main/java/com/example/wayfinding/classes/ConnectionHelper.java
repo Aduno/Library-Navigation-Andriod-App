@@ -47,7 +47,7 @@ public class ConnectionHelper{
         },new Response.ErrorListener(){
             @Override
             public void onErrorResponse(VolleyError e){
-                Toast.makeText(context,"Failed to connect to database", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context,"Failed to connect to database", Toast.LENGTH_SHORT).show();
             }
         });
         requestQueue.add(req);
