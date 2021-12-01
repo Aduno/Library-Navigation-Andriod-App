@@ -43,6 +43,9 @@ class NavigationScreen : AppCompatActivity() {
         checkPointDef["Elevator"] = "c336aa38-054b-b048-3b0a-e75027061970"
         checkPointDef["Service Desk"] = "c336aa38-054b-b048-3b0a-e75027061971"
         checkPointDef["Entrance"] = "c336aa38-054b-b048-3b0a-e75027061972"
+        checkPointDef["c336aa38-054b-b048-3b0a-e75027061972"] = "Entrance"
+        checkPointDef["c336aa38-054b-b048-3b0a-e75027061971"] = "Service Desk"
+        checkPointDef["c336aa38-054b-b048-3b0a-e75027061970"] = "Elevator"
 
         checkPoints["c336aa38-054b-b048-3b0a-e75027061970"] = CheckPoint("Elevator","c336aa38-054b-b048-3b0a-e75027061970",intArrayOf(20,23))
         checkPoints["c336aa38-054b-b048-3b0a-e75027061971"] = CheckPoint("Service Desk","c336aa38-054b-b048-3b0a-e75027061971", intArrayOf(14,27))
@@ -53,20 +56,15 @@ class NavigationScreen : AppCompatActivity() {
         var obs = parseString("(20,24):(21,24):(22,24):(23,24):(16,25):(20,25):(21,25):(22,25):(23,25):(16,26):(16,29):(17,29):(18,29):(19,29)")
         for (s in obs){
             val split = s.split(",")
-            val x =split.get(0).substring(1)
-            val y =split.get(1).substring(0,split.get(1).length-1)
+            val x = split[0].substring(1)
+            val y = split[1].substring(0,split.get(1).length-1)
             putObstacles(Integer.parseInt(x),Integer.parseInt(y),obstacles)
         }
         map.setObstacles(obstacles)
         map.setCheckPoints(checkPoints)
 
-        var desination = intent.getStringExtra("destination")
-        checkPoints.forEach {
-            (key, value) ->
-            if(value.name.equals(desination)){
-                pointUUID = value.uuid
-            }
-        }
+        val desination = intent.getStringExtra("destination")
+        pointUUID = checkPointDef.getValue(desination.toString())
         path = map.findPath(currentRegion!!.uuid,pointUUID)
 
         val beaconManager = BeaconManager.getInstanceForApplication(this)
@@ -89,7 +87,7 @@ class NavigationScreen : AppCompatActivity() {
         // These two lines set up a Live Data observer so this Activity can get beacon data from the Application class
         val regionViewModel = BeaconManager.getInstanceForApplication(this).getRegionViewModel(region)
         regionViewModel.rangedBeacons.observeForever(rangingObserver)
-        var canvas = GrowingLine(this,null,path)
+        var canvas = GrowingLine(this,null,path, checkPointDef)
         frame = findViewById<RelativeLayout>(R.id.canvasFrame)
         frame.addView(canvas)
     }
@@ -100,22 +98,21 @@ class NavigationScreen : AppCompatActivity() {
         for (beacon: Beacon in beacons) {
             val distance = beacon.distance
             val s = beacon.id1.toString()
-            if(beacon.id1.toString().contentEquals("c336aa38-054b-b048-3b0a-e75027061971")) {
-                Log.d("output", "HERE")
+            if (checkPoints.containsKey(s) && distance < 2.5) {
                 Log.d("output", beacon.id1.toString())
-                if (checkPoints.containsKey(beacon.id1.toString()) && distance < 2.5) {
-                    Log.d("output", beacon.id1.toString())
-                    if (currentRegion != checkPoints.getValue(beacon.id1.toString()) && currentClosest > distance) {
-                        currentRegion = checkPoints.getValue(beacon.id1.toString())
-                        currentClosest = distance
-                        path = map.findPath(currentRegion!!.uuid, pointUUID)
-                        var canvas = GrowingLine(this, null, path)
+                if (currentRegion != checkPoints.getValue(s) && currentClosest > distance) {
+                    currentRegion = checkPoints.getValue(s)
+                    currentClosest = distance
+                    path = map.findPath(currentRegion!!.uuid, pointUUID)
+                    var canvas = GrowingLine(this, null, path, checkPointDef)
 
-                        frame = findViewById<RelativeLayout>(R.id.canvasFrame)
-                        frame.addView(canvas)
-                    }
+                    frame = findViewById<RelativeLayout>(R.id.canvasFrame)
+                    frame.addView(canvas)
                 }
             }
+//            if(beacon.id1.toString().contentEquals("c336aa38-054b-b048-3b0a-e75027061971")) {
+//                Log.d("output", "HERE")
+//                Log.d("output", beacon.id1.toString())
         }
     }
 

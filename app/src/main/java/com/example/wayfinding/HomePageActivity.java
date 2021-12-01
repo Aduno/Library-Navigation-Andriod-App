@@ -113,6 +113,7 @@ public class HomePageActivity extends AppCompatActivity {
                 });
             }
         },settings);
+        locationList.add("Cafe");
         locationList.add("Elevator");
         locationList.add("Entrance");
         locationList.add("Service Desk");
