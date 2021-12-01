@@ -113,7 +113,7 @@ public class HomePageActivity extends AppCompatActivity {
                 });
             }
         },settings);
-        locationList.add("Cafe");
+//        locationList.add("Cafe");
         locationList.add("Elevator");
         locationList.add("Entrance");
         locationList.add("Service Desk");
@@ -206,10 +206,16 @@ public class HomePageActivity extends AppCompatActivity {
                 //Need to test if the result is within the list of possible location
                 ArrayList<String> result = data.getStringArrayListExtra(
                         RecognizerIntent.EXTRA_RESULTS);
-                String formatted = result.get(0).substring(0,1).toUpperCase() + result.get(0).substring(1);
-                Log.d("voiceoutput",formatted);
-                if(locationList.contains(formatted)){
-                    openNavigation(result.get(0));
+                StringBuilder formatted = new StringBuilder();
+                String[] s = result.toString().split(" ");
+                s[0] = s[0].substring(1);
+                for(String word:s){
+                    formatted.append(word.substring(0,1).toUpperCase()+word.substring(1)+" ");
+                }
+                String parsed = formatted.substring(0,formatted.length()-2);
+                Log.d("voiceoutput", formatted.toString());
+                if(locationList.contains(parsed)){
+                    openNavigation(parsed);
                 }
             }
         }
@@ -222,8 +228,7 @@ public class HomePageActivity extends AppCompatActivity {
         String msg = "Finding the best route to "+location+"...";
         Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this,NavigationScreen.class);
-        String format = location.substring(0,1).toUpperCase()+location.substring(1);
-        intent.putExtra("destination",format);
+        intent.putExtra("destination",location);
         startActivity(intent);
         finish(); //Added to stop a bug where the navigation wont reopen after backing once and trying to get back to navigation
     }
